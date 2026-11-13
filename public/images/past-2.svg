@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440">
+  <defs>
+    <pattern id="dots-p2" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2.2" fill="#111111" fill-opacity="0.18" />
+    </pattern>
+  </defs>
+  <rect width="640" height="440" fill="#4285F4" />
+  <rect x="0" y="0" width="260" height="440" fill="url(#dots-p2)" />
+  <rect x="24" y="24" width="592" height="392" fill="none" stroke="#111111" stroke-width="5" />
+
+  <!-- Main Card -->
+  <rect x="58" y="62" width="532" height="324" fill="#111111" />
+  <rect x="48" y="52" width="532" height="324" fill="#FFF8E7" stroke="#111111" stroke-width="5" />
+
+  <!-- Cloud Stack Illustration -->
+  <g transform="translate(76, 96)">
+    <!-- Server / Cloud Nodes -->
+    <rect x="8" y="8" width="190" height="58" fill="#111111" />
+    <rect x="0" y="0" width="190" height="58" fill="#34A853" stroke="#111111" stroke-width="4" />
+    <circle cx="30" cy="29" r="9" fill="#FFF8E7" stroke="#111111" stroke-width="3" />
+    <circle cx="58" cy="29" r="9" fill="#FBBC04" stroke="#111111" stroke-width="3" />
+    <rect x="88" y="21" width="80" height="16" fill="#111111" />
+
+    <rect x="8" y="88" width="190" height="58" fill="#111111" />
+    <rect x="0" y="80" width="190" height="58" fill="#FBBC04" stroke="#111111" stroke-width="4" />
+    <circle cx="30" cy="109" r="9" fill="#EA4335" stroke="#111111" stroke-width="3" />
+    <circle cx="58" cy="109" r="9" fill="#FFF8E7" stroke="#111111" stroke-width="3" />
+    <rect x="88" y="101" width="80" height="16" fill="#111111" />
+
+    <rect x="8" y="168" width="190" height="58" fill="#111111" />
+    <rect x="0" y="160" width="190" height="58" fill="#EA4335" stroke="#111111" stroke-width="4" />
+    <circle cx="30" cy="189" r="9" fill="#FFF8E7" stroke="#111111" stroke-width="3" />
+    <circle cx="58" cy="189" r="9" fill="#4285F4" stroke="#111111" stroke-width="3" />
+    <rect x="88" y="181" width="80" height="16" fill="#FFF8E7" />
+  </g>
+
+  <!-- Title Block -->
+  <g transform="translate(298, 96)">
+    <rect x="0" y="0" width="248" height="38" fill="#111111" />
+    <text x="124" y="25" text-anchor="middle" font-family="monospace" font-weight="900" font-size="16" fill="#FBBC04">// HANDS-ON COHORT</text>
+
+    <text x="0" y="92" font-family="sans-serif" font-weight="900" font-size="46" fill="#111111">STUDY JAM</text>
+    <text x="0" y="138" font-family="sans-serif" font-weight="900" font-size="34" fill="#4285F4">GEN AI &amp; CLOUD</text>
+
+    <rect x="6" y="166" width="242" height="62" fill="#111111" />
+    <rect x="0" y="160" width="242" height="62" fill="#FBBC04" stroke="#111111" stroke-width="4" />
+    <text x="121" y="198" text-anchor="middle" font-family="monospace" font-weight="900" font-size="20" fill="#111111">210+ SKILL BADGES</text>
+  </g>
+</svg>

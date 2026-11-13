@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <rect width="600" height="450" fill="#FBBC04" />
+  <rect x="36" y="36" width="528" height="378" fill="#FFF8E7" stroke="#111111" stroke-width="5" />
+  <!-- Open Source & Git Graph -->
+  <line x1="120" y1="110" x2="480" y2="110" stroke="#111111" stroke-width="8" />
+  <path d="M 190 110 L 250 190 L 390 190 L 440 110" fill="none" stroke="#EA4335" stroke-width="8" />
+  <circle cx="120" cy="110" r="20" fill="#4285F4" stroke="#111111" stroke-width="5" />
+  <circle cx="190" cy="110" r="20" fill="#34A853" stroke="#111111" stroke-width="5" />
+  <circle cx="250" cy="190" r="20" fill="#FBBC04" stroke="#111111" stroke-width="5" />
+  <circle cx="390" cy="190" r="20" fill="#EA4335" stroke="#111111" stroke-width="5" />
+  <circle cx="480" cy="110" r="20" fill="#34A853" stroke="#111111" stroke-width="5" />
+
+  <rect x="74" y="250" width="452" height="126" fill="#4285F4" stroke="#111111" stroke-width="5" />
+  <text x="300" y="306" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="38" fill="#FFF8E7">OPEN SOURCE SPRINT</text>
+  <text x="300" y="346" text-anchor="middle" font-family="monospace" font-weight="900" font-size="18" fill="#FBBC04">320+ PULL REQUESTS MERGED</text>
+</svg>

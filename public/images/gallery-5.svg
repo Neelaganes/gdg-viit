@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <rect width="600" height="450" fill="#4285F4" />
+  <rect x="36" y="36" width="528" height="378" fill="#FFF8E7" stroke="#111111" stroke-width="5" />
+  <!-- GenAI & Gemini Lab -->
+  <rect x="72" y="72" width="456" height="190" fill="#111111" />
+  <polygon points="300,92 318,142 368,160 318,178 300,228 282,178 232,160 282,142" fill="#FBBC04" stroke="#FFF8E7" stroke-width="3" />
+  <circle cx="150" cy="160" r="36" fill="#4285F4" stroke="#FFF8E7" stroke-width="4" />
+  <circle cx="450" cy="160" r="36" fill="#EA4335" stroke="#FFF8E7" stroke-width="4" />
+
+  <rect x="72" y="286" width="456" height="92" fill="#FBBC04" stroke="#111111" stroke-width="5" />
+  <text x="300" y="328" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="34" fill="#111111">BUILD WITH AI LAB</text>
+  <text x="300" y="360" text-anchor="middle" font-family="monospace" font-weight="800" font-size="17" fill="#111111">GEMINI API • VERTEX AI • RAG AGENTS</text>
+</svg>

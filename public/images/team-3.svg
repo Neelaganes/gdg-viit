@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <pattern id="dots-t3" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2" fill="#111111" fill-opacity="0.16" />
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="#FBBC04" />
+  <rect x="0" y="200" width="400" height="200" fill="url(#dots-t3)" />
+  <!-- Hair Puff / Geometric Buns -->
+  <circle cx="116" cy="110" r="46" fill="#111111" />
+  <circle cx="284" cy="110" r="46" fill="#111111" />
+  <!-- Sweater -->
+  <path d="M 55 400 L 92 282 L 308 282 L 345 400 Z" fill="#4285F4" stroke="#111111" stroke-width="6" />
+  <line x1="140" y1="282" x2="140" y2="400" stroke="#111111" stroke-width="6" />
+  <line x1="260" y1="282" x2="260" y2="400" stroke="#111111" stroke-width="6" />
+  <!-- Neck -->
+  <rect x="174" y="236" width="52" height="54" fill="#FFF8E7" stroke="#111111" stroke-width="6" />
+  <!-- Face -->
+  <circle cx="200" cy="176" r="76" fill="#FFF8E7" stroke="#111111" stroke-width="6" />
+  <!-- Round Designer Glasses -->
+  <circle cx="168" cy="170" r="24" fill="#EA4335" stroke="#111111" stroke-width="6" />
+  <circle cx="232" cy="170" r="24" fill="#EA4335" stroke="#111111" stroke-width="6" />
+  <line x1="192" y1="170" x2="208" y2="170" stroke="#111111" stroke-width="6" />
+  <circle cx="168" cy="170" r="7" fill="#FFF8E7" />
+  <circle cx="232" cy="170" r="7" fill="#FFF8E7" />
+  <!-- Cheeks & Smile -->
+  <circle cx="144" cy="204" r="10" fill="#34A853" stroke="#111111" stroke-width="4" />
+  <circle cx="256" cy="204" r="10" fill="#34A853" stroke="#111111" stroke-width="4" />
+  <path d="M 178 214 Q 200 232 222 214" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" />
+</svg>

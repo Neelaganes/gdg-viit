@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450">
+  <rect width="600" height="450" fill="#EA4335" />
+  <rect x="36" y="36" width="528" height="378" fill="#FFF8E7" stroke="#111111" stroke-width="5" />
+  <!-- Community Crew Group Photo Graphic -->
+  <rect x="70" y="72" width="460" height="190" fill="#4285F4" stroke="#111111" stroke-width="5" />
+  <!-- Geometric Avatars Row -->
+  <circle cx="145" cy="145" r="32" fill="#FBBC04" stroke="#111111" stroke-width="4" />
+  <circle cx="222" cy="138" r="32" fill="#34A853" stroke="#111111" stroke-width="4" />
+  <circle cx="300" cy="132" r="36" fill="#EA4335" stroke="#111111" stroke-width="4" />
+  <circle cx="378" cy="138" r="32" fill="#FFF8E7" stroke="#111111" stroke-width="4" />
+  <circle cx="455" cy="145" r="32" fill="#FBBC04" stroke="#111111" stroke-width="4" />
+
+  <rect x="105" y="185" width="390" height="77" fill="#111111" />
+  <text x="300" y="232" text-anchor="middle" font-family="sans-serif" font-weight="900" font-size="32" fill="#FFF8E7">GDG ON CAMPUS VIIT</text>
+
+  <rect x="70" y="286" width="460" height="90" fill="#34A853" stroke="#111111" stroke-width="5" />
+  <text x="300" y="338" text-anchor="middle" font-family="monospace" font-weight="900" font-size="22" fill="#111111">COMMUNITY MEETUP • VISAKHAPATNAM</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <pattern id="dots-t6" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2" fill="#111111" fill-opacity="0.16" />
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="#34A853" />
+  <rect x="180" y="180" width="220" height="220" fill="url(#dots-t6)" />
+  <!-- Jacket -->
+  <path d="M 50 400 L 88 282 L 312 282 L 350 400 Z" fill="#FBBC04" stroke="#111111" stroke-width="6" />
+  <rect x="165" y="282" width="70" height="118" fill="#EA4335" stroke="#111111" stroke-width="6" />
+  <!-- Neck -->
+  <rect x="174" y="236" width="52" height="54" fill="#FFF8E7" stroke="#111111" stroke-width="6" />
+  <!-- Face -->
+  <rect x="124" y="100" width="152" height="150" rx="22" fill="#FFF8E7" stroke="#111111" stroke-width="6" />
+  <!-- Side-swept Geometric Hair -->
+  <polygon points="116,118 116,72 268,58 292,118 232,126 156,112" fill="#111111" stroke="#111111" stroke-width="5" />
+  <!-- Thick Square Glasses -->
+  <rect x="138" y="148" width="52" height="42" fill="#FFF8E7" stroke="#111111" stroke-width="6" />
+  <rect x="210" y="148" width="52" height="42" fill="#FFF8E7" stroke="#111111" stroke-width="6" />
+  <line x1="190" y1="168" x2="210" y2="168" stroke="#111111" stroke-width="6" />
+  <rect x="158" y="162" width="12" height="12" fill="#4285F4" />
+  <rect x="230" y="162" width="12" height="12" fill="#4285F4" />
+  <!-- Smile -->
+  <path d="M 174 214 L 226 214" stroke="#111111" stroke-width="6" stroke-linecap="round" />
+  <path d="M 212 214 Q 222 228 230 214" fill="#EA4335" stroke="#111111" stroke-width="4" />
+</svg>

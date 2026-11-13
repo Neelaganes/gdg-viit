@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <pattern id="dots-t1" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2" fill="#111111" fill-opacity="0.16" />
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="#4285F4" />
+  <rect x="200" y="0" width="200" height="400" fill="url(#dots-t1)" />
+  <!-- Background Accent Star/Badge -->
+  <circle cx="80" cy="80" r="32" fill="#FBBC04" stroke="#111111" stroke-width="5" />
+  <!-- Shoulders / Hoodie -->
+  <path d="M 50 400 L 90 285 L 310 285 L 350 400 Z" fill="#EA4335" stroke="#111111" stroke-width="6" />
+  <rect x="160" y="285" width="80" height="115" fill="#FFF8E7" stroke="#111111" stroke-width="6" />
+  <!-- Neck -->
+  <rect x="172" y="238" width="56" height="58" fill="#FBBC04" stroke="#111111" stroke-width="6" />
+  <!-- Hair Back -->
+  <rect x="108" y="70" width="184" height="90" rx="18" fill="#111111" />
+  <!-- Face (Geometric Rounded Rect) -->
+  <rect x="122" y="102" width="156" height="154" rx="28" fill="#FFF8E7" stroke="#111111" stroke-width="6" />
+  <!-- Chunky Brutalist Glasses -->
+  <rect x="136" y="148" width="54" height="38" fill="#FBBC04" stroke="#111111" stroke-width="6" />
+  <rect x="210" y="148" width="54" height="38" fill="#34A853" stroke="#111111" stroke-width="6" />
+  <line x1="190" y1="166" x2="210" y2="166" stroke="#111111" stroke-width="6" />
+  <circle cx="163" cy="167" r="7" fill="#111111" />
+  <circle cx="237" cy="167" r="7" fill="#111111" />
+  <!-- Nose & Smile -->
+  <polyline points="200,174 192,202 208,202" fill="none" stroke="#111111" stroke-width="5" stroke-linejoin="round" />
+  <path d="M 168 220 Q 200 244 232 220" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" />
+  <!-- Cap / Visor -->
+  <path d="M 114 114 L 286 114 L 270 68 L 130 68 Z" fill="#FBBC04" stroke="#111111" stroke-width="6" />
+  <rect x="114" y="104" width="194" height="18" fill="#111111" />
+</svg>

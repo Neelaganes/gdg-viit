@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <pattern id="dots-t2" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2" fill="#111111" fill-opacity="0.16" />
+    </pattern>
+  </defs>
+  <rect width="400" height="400" fill="#34A853" />
+  <rect x="0" y="0" width="180" height="400" fill="url(#dots-t2)" />
+  <rect x="295" y="44" width="60" height="60" transform="rotate(12 325 74)" fill="#EA4335" stroke="#111111" stroke-width="5" />
+  <!-- Jacket -->
+  <path d="M 45 400 L 85 280 L 315 280 L 355 400 Z" fill="#111111" stroke="#111111" stroke-width="6" />
+  <polygon points="150,280 200,360 250,280" fill="#FBBC04" stroke="#111111" stroke-width="6" />
+  <!-- Neck -->
+  <rect x="172" y="236" width="56" height="54" fill="#FFF8E7" stroke="#111111" stroke-width="6" />
+  <!-- Headphones Band -->
+  <path d="M 96 180 C 96 60, 304 60, 304 180" fill="none" stroke="#111111" stroke-width="14" />
+  <!-- Face -->
+  <polygon points="124,106 276,106 264,252 136,252" fill="#FFF8E7" stroke="#111111" stroke-width="6" />
+  <!-- Headphone Cups -->
+  <rect x="86" y="142" width="38" height="72" rx="10" fill="#EA4335" stroke="#111111" stroke-width="6" />
+  <rect x="276" y="142" width="38" height="72" rx="10" fill="#EA4335" stroke="#111111" stroke-width="6" />
+  <!-- Hair Bangs -->
+  <polygon points="120,106 280,106 256,144 190,128 140,146" fill="#4285F4" stroke="#111111" stroke-width="6" />
+  <!-- Eyes & Brows -->
+  <line x1="148" y1="154" x2="184" y2="150" stroke="#111111" stroke-width="6" />
+  <line x1="216" y1="150" x2="252" y2="154" stroke="#111111" stroke-width="6" />
+  <circle cx="166" cy="172" r="9" fill="#111111" />
+  <circle cx="234" cy="172" r="9" fill="#111111" />
+  <!-- Smile -->
+  <rect x="170" y="208" width="60" height="20" rx="10" fill="#FBBC04" stroke="#111111" stroke-width="5" />
+</svg>

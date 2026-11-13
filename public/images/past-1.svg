@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" width="640" height="440">
+  <defs>
+    <pattern id="dots-p1" x="0" y="0" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="2" fill="#111111" fill-opacity="0.2" />
+    </pattern>
+  </defs>
+  <rect width="640" height="440" fill="#EA4335" />
+  <rect x="340" y="0" width="300" height="440" fill="url(#dots-p1)" />
+  <rect x="24" y="24" width="592" height="392" fill="none" stroke="#111111" stroke-width="5" />
+
+  <!-- Neo-Brutalist Window -->
+  <rect x="58" y="62" width="532" height="324" fill="#111111" />
+  <rect x="48" y="52" width="532" height="324" fill="#FFF8E7" stroke="#111111" stroke-width="5" />
+  <rect x="48" y="52" width="532" height="42" fill="#FBBC04" stroke="#111111" stroke-width="5" />
+  <circle cx="74" cy="73" r="8" fill="#EA4335" stroke="#111111" stroke-width="3" />
+  <circle cx="98" cy="73" r="8" fill="#34A853" stroke="#111111" stroke-width="3" />
+  <text x="124" y="79" font-family="monospace" font-weight="900" font-size="16" fill="#111111">HACK_VIIT_36HR.EXE</text>
+
+  <!-- Isometric Laptop + Lightning Graphic -->
+  <g transform="translate(82, 130)">
+    <rect x="8" y="8" width="170" height="116" fill="#111111" />
+    <rect x="0" y="0" width="170" height="116" fill="#4285F4" stroke="#111111" stroke-width="4" />
+    <rect x="16" y="16" width="138" height="84" fill="#111111" />
+    <text x="85" y="68" text-anchor="middle" font-family="monospace" font-weight="900" font-size="30" fill="#34A853">&lt;/&gt;</text>
+    <polygon points="-16,116 186,116 206,142 -36,142" fill="#FBBC04" stroke="#111111" stroke-width="4" />
+  </g>
+
+  <!-- Right Side Poster Typography -->
+  <rect x="292" y="124" width="256" height="42" fill="#34A853" stroke="#111111" stroke-width="4" />
+  <text x="420" y="152" text-anchor="middle" font-family="monospace" font-weight="900" font-size="22" fill="#111111">36-HOUR SPRINT</text>
+  <text x="292" y="216" font-family="sans-serif" font-weight="900" font-size="48" fill="#111111">HACKATHON</text>
+  <text x="292" y="262" font-family="sans-serif" font-weight="900" font-size="38" fill="#EA4335">BUILD FOR VIZAG</text>
+
+  <!-- Bottom Stat Pills -->
+  <rect x="82" y="308" width="210" height="42" fill="#111111" />
+  <text x="187" y="335" text-anchor="middle" font-family="monospace" font-weight="900" font-size="17" fill="#FFF8E7">48 TEAMS • 190 DEVS</text>
+  <rect x="312" y="308" width="236" height="42" fill="#FBBC04" stroke="#111111" stroke-width="4" />
+  <text x="430" y="335" text-anchor="middle" font-family="monospace" font-weight="900" font-size="17" fill="#111111">SOLUTIONS CHALLENGE</text>
+</svg>
