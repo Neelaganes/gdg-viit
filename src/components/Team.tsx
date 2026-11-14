@@ -21,70 +21,70 @@ const ROLE_STYLES: Record<string, RoleStyle> = {
     roleBg: "bg-g-blue text-white",
     backBg: "bg-g-blue",
     backText: "text-white",
-    focus: "Runs the chapter and keeps every event on track.",
+    focus: "Bringing vision to life through leadership and collaboration.",
     stack: "Planning · Community",
   },
   "Co-Lead": {
     roleBg: "bg-g-red text-white",
     backBg: "bg-g-red",
     backText: "text-white",
-    focus: "Backs the organisers across every team.",
+    focus: "Empowering people, strengthening ideas and driving impact.",
     stack: "Leadership · Ops",
   },
   "Web Dev Lead": {
     roleBg: "bg-g-blue text-white",
     backBg: "bg-g-green",
     backText: "text-ink",
-    focus: "Leads web workshops and builds the chapter site.",
+    focus: "Building impactful digital experiences through innovation.",
     stack: "Next.js · TypeScript",
   },
   "Cloud Lead": {
     roleBg: "bg-g-red text-white",
     backBg: "bg-g-green",
     backText: "text-ink",
-    focus: "Runs Cloud study jams and skill-badge drives.",
+    focus: "Connecting ideas to scalable, cloud-powered possibilities.",
     stack: "Google Cloud · Docker",
   },
   "AI/ML Lead": {
     roleBg: "bg-g-yellow text-ink",
     backBg: "bg-g-green",
     backText: "text-ink",
-    focus: "Leads Gemini and machine-learning sessions.",
+    focus: "Exploring intelligence, shaping innovation and building the future.",
     stack: "Gemini · Python",
   },
   "CP/DSA Lead": {
     roleBg: "bg-g-green text-ink",
     backBg: "bg-g-green",
     backText: "text-ink",
-    focus: "Runs coding contests and DSA practice.",
+    focus: "Sharpening problem-solving skills and building coding excellence.",
     stack: "C++ · Algorithms",
   },
   "UI/UX Lead": {
     roleBg: "bg-g-yellow text-ink",
     backBg: "bg-g-green",
     backText: "text-ink",
-    focus: "Designs the chapter's look, posters and UI.",
+    focus: "Turning creativity into meaningful user experiences.",
     stack: "Figma · Design",
   },
   "Events Lead": {
     roleBg: "bg-g-red text-white",
     backBg: "bg-g-yellow",
     backText: "text-ink",
-    focus: "Plans and runs workshops and hackathons.",
+    focus: "Creating experiences that bring ideas and people together.",
     stack: "Logistics · Ops",
   },
   "Content Lead": {
     roleBg: "bg-g-green text-ink",
     backBg: "bg-g-yellow",
     backText: "text-ink",
-    focus: "Writes the posts, recaps and event copy.",
+    focus: "Crafting stories that inform, inspire and connect.",
     stack: "Writing · Docs",
   },
   "Social Media Lead": {
     roleBg: "bg-g-blue text-white",
     backBg: "bg-g-yellow",
     backText: "text-ink",
-    focus: "Runs the chapter's social channels.",
+    focus: "Amplifying our voice and growing our community.",
     stack: "Instagram · LinkedIn",
   },
 };
@@ -169,10 +169,65 @@ function PhotoSlot({ member }: { member: TeamMember }) {
   );
 }
 
+/* ------------------------------------------------------------------ */
+/*  Profile links, keyed by member id. Leave a field out if a member   */
+/*  has no profile yet: that button is shown greyed out.               */
+/* ------------------------------------------------------------------ */
+
+const PROFILE_LINKS: Record<string, { github?: string; linkedin?: string }> = {
+  anshika: { linkedin: "https://www.linkedin.com/in/anshika-vishwakarma/" },
+  deepanwitha: { linkedin: "https://www.linkedin.com/in/deepanwitha-gopisetty-17a183303/" },
+  danush: {
+    github: "https://github.com/danushkaviti-tech",
+    linkedin: "https://www.linkedin.com/in/kaviti-danush-180095325",
+  },
+  "neela-ganesh": {
+    github: "https://github.com/Neelaganes",
+    linkedin: "https://www.linkedin.com/in/neelaganeshd/",
+  },
+  kousik: { github: "https://github.com/suryanandan-byte" },
+  sahithi: {
+    github: "https://github.com/Sahithi7396",
+    linkedin: "https://www.linkedin.com/in/sahithi-gannavarapu-a0a126316/",
+  },
+  "siri-vennela": {
+    github: "https://github.com/sirivennelauddagiri-eng",
+    linkedin: "https://www.linkedin.com/in/siri-vennela11",
+  },
+  "sri-praneeth": {
+    github: "https://github.com/sripraneeth09",
+    linkedin: "https://www.linkedin.com/in/sri-praneeth-chakka-28581a31b",
+  },
+  harshitha: {
+    github: "https://github.com/Harshithachanna",
+    linkedin: "https://www.linkedin.com/in/harshitha-channa-388363324",
+  },
+  "ahamed-raza": {
+    github: "https://github.com/Codex-39",
+    linkedin: "https://www.linkedin.com/in/mohammed-ahamed-raza-0b0319382/",
+  },
+  jahnavi: {
+    github: "https://github.com/yennetijahnavi-AI28",
+    linkedin: "https://www.linkedin.com/in/yenneti-jahnavi-532b04323",
+  },
+  nishanth: {
+    github: "https://github.com/nishanthxvarma",
+    linkedin: "https://www.linkedin.com/in/nishanthxvarma/",
+  },
+  prasanna: {
+    github: "https://github.com/prassu-codes",
+    linkedin: "https://www.linkedin.com/in/yerra-prasanna",
+  },
+  srikanth: {
+    github: "https://github.com/srikanthkadiri",
+    linkedin: "https://www.linkedin.com/in/srikanth-kadiri-7b8049377",
+  },
+};
+
 const SOCIALS = [
-  { label: "GH", title: "GitHub" },
-  { label: "IN", title: "LinkedIn" },
-];
+  { key: "github", label: "GH", title: "GitHub" },
+  { key: "linkedin", label: "IN", title: "LinkedIn" },
+] as const;
 
 interface IdCardProps {
   member: TeamMember;
@@ -291,23 +346,37 @@ function IdCard({ member, badgeNo, delay, isFlipped, onToggle, springConfig, red
           {/* Social Links & Barcode Strip */}
           <div>
             <div className="flex items-center justify-between gap-2">
-              {SOCIALS.map((soc) => (
-                <a
-                  key={soc.label}
-                  href="#team"
-                  onClick={(e) => e.stopPropagation()}
-                  aria-label={`${member.name} (${member.role}) on ${soc.title}`}
-                  className="flex-1 rounded-[4px] bg-cream py-1 text-center font-mono text-[10px] sm:text-xs font-extrabold text-ink brutal-btn"
-                >
-                  {soc.label}
-                </a>
-              ))}
+              {SOCIALS.map((soc) => {
+                const href = PROFILE_LINKS[member.id]?.[soc.key];
+                return href ? (
+                  <a
+                    key={soc.label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    onKeyDown={(e) => e.stopPropagation()}
+                    aria-label={`${member.name} on ${soc.title} (opens in a new tab)`}
+                    className="flex-1 rounded-[4px] bg-cream py-1 text-center font-mono text-[10px] sm:text-xs font-extrabold text-ink brutal-btn"
+                  >
+                    {soc.label}
+                  </a>
+                ) : (
+                  <span
+                    key={soc.label}
+                    aria-label={`${member.name} has no ${soc.title} link yet`}
+                    title={`No ${soc.title} link yet`}
+                    className="flex-1 cursor-not-allowed rounded-[4px] border-2 border-dashed border-ink/50 bg-white/40 py-1 text-center font-mono text-[10px] sm:text-xs font-extrabold text-ink/40"
+                  >
+                    {soc.label}
+                  </span>
+                );
+              })}
             </div>
             <div
               aria-hidden="true"
-              className="mt-2.5 flex h-5 items-center justify-between overflow-hidden rounded-[3px] border-2 border-ink bg-white px-2 font-mono text-[10px] font-black tracking-[0.2em] text-ink"
+              className="mt-2.5 flex h-5 items-center justify-center overflow-hidden rounded-[3px] border-2 border-ink bg-white px-2 font-mono text-[10px] font-black tracking-[0.2em] text-ink"
             >
-              <span className="truncate">|||||</span>
               <span className="shrink-0 tracking-[0.08em]">GDG ON CAMPUS · VIIT26</span>
             </div>
           </div>
@@ -453,7 +522,7 @@ export default function Team() {
         {/* Tier 2: Domain leads — 4-column grid below a divider */}
         <div className="mt-8 sm:mt-10 border-t-[3px] border-dashed border-ink/25 pt-6 sm:pt-8">
           <TierLabel label="Domain leads" count={DOMAIN_LEADS.length} bg="bg-g-green text-ink" />
-          <SwipeRow label="Domain leads" gridClass="sm:grid-cols-3 lg:grid-cols-4" reducedMotion={prefersReducedMotion}>
+          <SwipeRow label="Domain leads" gridClass="sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4" reducedMotion={prefersReducedMotion}>
             {renderTier(DOMAIN_LEADS, LEADERSHIP.length)}
           </SwipeRow>
         </div>
