@@ -19,7 +19,7 @@ interface UpcomingEvent {
 const UPCOMING_EVENTS: UpcomingEvent[] = [
   {
     id: "build-with-ai",
-    date: "NOV 22",
+    date: "SOON...",
     stickerColor: "bg-g-yellow text-ink",
     stickerRotate: "-rotate-3",
     tag: "AI / ML",
@@ -31,7 +31,7 @@ const UPCOMING_EVENTS: UpcomingEvent[] = [
   },
   {
     id: "cloud-study-jam",
-    date: "NOV 29",
+    date: "SOON...",
     stickerColor: "bg-g-green text-ink",
     stickerRotate: "rotate-2",
     tag: "CLOUD",
@@ -43,7 +43,7 @@ const UPCOMING_EVENTS: UpcomingEvent[] = [
   },
   {
     id: "hack-viit",
-    date: "JAN 10",
+    date: "SOON...",
     stickerColor: "bg-g-red text-white",
     stickerRotate: "-rotate-2",
     tag: "HACKATHON",
@@ -55,7 +55,7 @@ const UPCOMING_EVENTS: UpcomingEvent[] = [
   },
   {
     id: "compose-camp",
-    date: "FEB 07",
+    date: "SOON...",
     stickerColor: "bg-g-blue text-white",
     stickerRotate: "rotate-3",
     tag: "ANDROID",

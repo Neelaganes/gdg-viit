@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import AboutBento from "@/components/AboutBento";
 import EventSpotlight from "@/components/EventSpotlight";
-import Tracks from "@/components/Tracks";
 import UpcomingEvents from "@/components/UpcomingEvents";
 import Team from "@/components/Team";
 import JoinCta from "@/components/JoinCta";
@@ -19,7 +18,6 @@ export default function Home() {
         <AboutBento />
         <EventSpotlight />
         <UpcomingEvents />
-        <Tracks />
         <Team />
         <JoinCta />
       </main>

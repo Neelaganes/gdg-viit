@@ -4,11 +4,10 @@ import { useState, useEffect } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 const NAV_LINKS = [
-  { label: "Events", href: "#events", tag: "01", color: "bg-g-blue text-white" },
-  { label: "Tracks", href: "#tracks", tag: "02", color: "bg-g-green text-ink" },
+  { label: "About", href: "#about", tag: "01", color: "bg-g-blue text-white" },
+  { label: "Events", href: "#events", tag: "02", color: "bg-g-green text-ink" },
   { label: "Team", href: "#team", tag: "03", color: "bg-g-yellow text-ink" },
-  { label: "Upcoming", href: "#upcoming", tag: "04", color: "bg-g-red text-white" },
-  { label: "FAQ", href: "#faq", tag: "05", color: "bg-cream text-ink" },
+  { label: "Contact Us", href: "#footer", tag: "04", color: "bg-g-red text-white" },
 ];
 
 export function BracketMarkSmall() {
