@@ -40,24 +40,6 @@ const SOCIAL_LINKS = [
       </svg>
     ),
   },
-  {
-    name: "Email",
-    href: "mailto:dscviit@gmail.com",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        className="h-5 w-5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.2"
-        strokeLinecap="square"
-        aria-hidden="true"
-      >
-        <rect x="3" y="4" width="18" height="16" rx="2" />
-        <polyline points="3,6 12,13 21,6" />
-      </svg>
-    ),
-  },
 ];
 
 export default function Footer() {
