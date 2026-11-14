@@ -101,12 +101,12 @@ function OdometerDigits({
   return (
     <div
       aria-label={`${target}${suffix}`}
-      className="inline-flex items-center gap-1 rounded-[6px] border-[3px] border-ink bg-white px-2.5 py-1.5 text-ink shadow-[4px_4px_0_#111]"
+      className="inline-flex items-center gap-1 rounded-[6px] border-[3px] border-ink bg-white px-1.5 py-1 text-ink shadow-[3px_3px_0_#111]"
     >
       {chars.map((char, idx) => (
         <span
           key={`${idx}-${char}`}
-          className="inline-flex h-11 sm:h-13 min-w-[1.9rem] sm:min-w-[2.3rem] items-center justify-center rounded-[3px] border-2 border-ink bg-cream px-1 font-mono text-3xl sm:text-4xl font-extrabold leading-none tabular-nums"
+          className="inline-flex h-8 sm:h-9 min-w-[1.4rem] sm:min-w-[1.6rem] items-center justify-center rounded-[3px] border-2 border-ink bg-cream px-0.5 font-mono text-xl sm:text-2xl font-extrabold leading-none tabular-nums"
         >
           {char}
         </span>
@@ -128,10 +128,10 @@ export default function Stats() {
     <section
       ref={sectionRef}
       aria-label="Chapter Impact Statistics"
-      className="py-12 sm:py-16"
+      className="py-6 sm:py-8"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           {STATS.map((stat, idx) => (
             <motion.div
               key={stat.code}
@@ -146,7 +146,7 @@ export default function Stats() {
                 ...springConfig,
                 delay: prefersReducedMotion ? 0 : idx * 0.07,
               }}
-              className={`flex flex-col justify-between rounded-[6px] p-6 brutal-card ${stat.bgClass} ${stat.textClass}`}
+              className={`flex flex-col justify-between rounded-[6px] p-4 brutal-card ${stat.bgClass} ${stat.textClass}`}
             >
               <div className="flex items-center justify-between">
                 <span
@@ -154,12 +154,9 @@ export default function Stats() {
                 >
                   {stat.code}
                 </span>
-                <span className="font-mono text-xs font-extrabold uppercase opacity-80">
-                  {"// VIIT METRIC"}
-                </span>
               </div>
 
-              <div className="my-6">
+              <div className="my-3">
                 <OdometerDigits
                   target={stat.target}
                   suffix={stat.suffix}
@@ -169,10 +166,10 @@ export default function Stats() {
               </div>
 
               <div>
-                <h3 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight leading-none">
+                <h3 className="font-display text-lg sm:text-xl font-extrabold uppercase tracking-tight leading-none">
                   {stat.label}
                 </h3>
-                <p className="mt-1.5 font-mono text-xs font-bold opacity-90">
+                <p className="mt-1 hidden sm:block font-mono text-[11px] font-bold opacity-90">
                   {stat.sublabel}
                 </p>
               </div>

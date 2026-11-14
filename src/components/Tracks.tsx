@@ -1,9 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface TrackItem {
   id: string;
@@ -20,11 +17,11 @@ interface TrackItem {
 const TRACKS: TrackItem[] = [
   {
     id: "android",
-    monoLabel: "// TRK_01 · MOBILE NATIVE",
+    monoLabel: "TRK_01",
     title: "Android",
     description:
-      "Architect modern Android apps with Kotlin, Jetpack Compose, Material 3 expressive motion, and on-device Gemini Nano APIs.",
-    topics: ["Kotlin", "Jetpack Compose", "Gemini Nano", "Material 3"],
+      "Kotlin, Compose and on-device Gemini Nano.",
+    topics: ["Kotlin", "Compose", "Gemini Nano"],
     bgClass: "bg-g-green",
     textClass: "text-ink",
     accentBgClass: "bg-cream text-ink",
@@ -32,11 +29,11 @@ const TRACKS: TrackItem[] = [
   },
   {
     id: "web",
-    monoLabel: "// TRK_02 · MODERN WEB PLATFORM",
+    monoLabel: "TRK_02",
     title: "Web",
     description:
-      "Ship blazing-fast full-stack web apps with Next.js App Router, TypeScript, View Transitions, WebGPU, and Core Web Vitals.",
-    topics: ["Next.js", "TypeScript", "Web APIs", "CWV"],
+      "Fast full-stack apps with Next.js & TypeScript.",
+    topics: ["Next.js", "TypeScript", "WebGPU"],
     bgClass: "bg-g-blue",
     textClass: "text-white",
     accentBgClass: "bg-g-yellow text-ink",
@@ -44,11 +41,11 @@ const TRACKS: TrackItem[] = [
   },
   {
     id: "cloud",
-    monoLabel: "// TRK_03 · DISTRIBUTED INFRA",
+    monoLabel: "TRK_03",
     title: "Cloud",
     description:
-      "Deploy resilient cloud-native workloads with Google Cloud Run, Kubernetes Engine (GKE), Docker containers, and IAM security.",
-    topics: ["Google Cloud", "Cloud Run", "Docker & K8s", "Terraform"],
+      "Cloud Run, GKE and containers, done right.",
+    topics: ["Cloud Run", "K8s", "Terraform"],
     bgClass: "bg-g-red",
     textClass: "text-white",
     accentBgClass: "bg-cream text-ink",
@@ -56,11 +53,11 @@ const TRACKS: TrackItem[] = [
   },
   {
     id: "ai-ml",
-    monoLabel: "// TRK_04 · APPLIED INTELLIGENCE",
+    monoLabel: "TRK_04",
     title: "AI/ML",
     description:
-      "Build multimodal agentic systems, grounded RAG pipelines, and fine-tuned models using the Gemini API, Vertex AI, and PyTorch.",
-    topics: ["Gemini API", "Vertex AI", "Agentic RAG", "PyTorch"],
+      "Agents and RAG with Gemini & Vertex AI.",
+    topics: ["Gemini", "Vertex AI", "RAG"],
     bgClass: "bg-g-yellow",
     textClass: "text-ink",
     accentBgClass: "bg-white text-ink",
@@ -68,11 +65,11 @@ const TRACKS: TrackItem[] = [
   },
   {
     id: "flutter",
-    monoLabel: "// TRK_05 · CROSS-PLATFORM UI",
+    monoLabel: "TRK_05",
     title: "Flutter",
     description:
-      "Craft 120fps multi-platform experiences for Android, iOS, Web, and Desktop from a single Dart codebase with custom Impeller shaders.",
-    topics: ["Dart", "Impeller", "Custom Painters", "Multi-platform"],
+      "One Dart codebase, every platform.",
+    topics: ["Dart", "Impeller", "Multi-platform"],
     bgClass: "bg-white",
     textClass: "text-ink",
     accentBgClass: "bg-g-blue text-white",
@@ -80,11 +77,11 @@ const TRACKS: TrackItem[] = [
   },
   {
     id: "firebase",
-    monoLabel: "// TRK_06 · REALTIME BACKEND",
+    monoLabel: "TRK_06",
     title: "Firebase",
     description:
-      "Go from prototype to production in hours with Cloud Firestore, Firebase Auth, Genkit AI flows, Security Rules, and App Hosting.",
-    topics: ["Firestore", "Firebase Auth", "Genkit AI", "App Hosting"],
+      "Prototype to production in hours.",
+    topics: ["Firestore", "Auth", "Genkit"],
     bgClass: "bg-cream",
     textClass: "text-ink",
     accentBgClass: "bg-g-red text-white",
@@ -94,45 +91,6 @@ const TRACKS: TrackItem[] = [
 
 export default function Tracks() {
   const prefersReducedMotion = useReducedMotion();
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const pinWrapRef = useRef<HTMLDivElement | null>(null);
-  const trackRailRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      const mm = gsap.matchMedia();
-
-      mm.add("(min-width: 1024px)", () => {
-        const rail = trackRailRef.current;
-        const wrap = pinWrapRef.current;
-        if (!rail || !wrap) return;
-
-        const getScrollDistance = () =>
-          Math.max(0, rail.scrollWidth - wrap.clientWidth + 64);
-
-        gsap.to(rail, {
-          x: () => -getScrollDistance(),
-          ease: "none",
-          scrollTrigger: {
-            trigger: wrap,
-            start: "top top+=72",
-            end: () => `+=${getScrollDistance()}`,
-            pin: true,
-            scrub: 0.5,
-            invalidateOnRefresh: true,
-          },
-        });
-      });
-
-      return () => mm.revert();
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [prefersReducedMotion]);
 
   const springConfig = prefersReducedMotion
     ? { duration: 0 }
@@ -141,20 +99,19 @@ export default function Tracks() {
   return (
     <section
       id="tracks"
-      ref={sectionRef}
       aria-labelledby="tracks-heading"
-      className="relative overflow-hidden py-16 sm:py-24 border-y-[3px] border-ink bg-white/60"
+      className="relative overflow-hidden py-10 sm:py-12 border-y-[3px] border-ink bg-white/60"
     >
-      <div ref={pinWrapRef} className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="mb-3 inline-flex items-center gap-2 rounded-[4px] border-[3px] border-ink bg-g-blue px-3 py-1 font-mono text-xs font-extrabold uppercase text-white shadow-[3px_3px_0_#111]">
-              <span>03 — &lt;tracks/&gt;</span>
+              <span>04 — &lt;tracks/&gt;</span>
             </div>
             <h2
               id="tracks-heading"
-              className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight leading-[0.95] text-ink"
+              className="font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight leading-[0.95] text-ink"
             >
               Pick your{" "}
               <span className="inline-block rounded-[4px] border-[3px] border-ink bg-g-green px-2.5 py-0.5 text-ink shadow-[4px_4px_0_#111] -rotate-1">
@@ -163,21 +120,13 @@ export default function Tracks() {
             </h2>
           </div>
 
-          <div className="flex items-center gap-3 font-mono text-xs sm:text-sm font-extrabold uppercase text-ink/80">
-            <span className="hidden lg:inline-block rounded-[4px] border-2 border-ink bg-g-yellow px-3 py-1.5 text-ink shadow-[2px_2px_0_#111]">
-              SCROLL TO PAN 6 TRACKS →
-            </span>
-            <span className="lg:hidden rounded-[4px] border-2 border-ink bg-g-yellow px-3 py-1.5 text-ink">
-              6 TECHNICAL DOMAINS
-            </span>
-          </div>
+          <span className="self-start md:self-auto rounded-[4px] border-2 border-ink bg-g-yellow px-3 py-1.5 font-mono text-xs font-extrabold uppercase text-ink shadow-[2px_2px_0_#111]">
+            6 TECHNICAL DOMAINS
+          </span>
         </div>
 
-        {/* Horizontal Rail on Desktop (>=1024px) / Vertical Stack on Mobile (<1024px) */}
-        <div
-          ref={trackRailRef}
-          className="flex flex-col gap-6 lg:flex-row lg:flex-nowrap lg:w-max lg:pr-8 pb-4"
-        >
+        {/* Single flex row: all six tracks side by side; the section's height follows the row */}
+        <div className="-mx-4 flex flex-row flex-nowrap items-stretch gap-4 overflow-x-auto px-4 pb-3 pt-1 snap-x snap-mandatory lg:mx-0 lg:overflow-visible lg:px-0 lg:snap-none">
           {TRACKS.map((track, idx) => (
             <motion.article
               key={track.id}
@@ -192,39 +141,37 @@ export default function Tracks() {
                 ...springConfig,
                 delay: prefersReducedMotion ? 0 : idx * 0.06,
               }}
-              className={`flex flex-col justify-between rounded-[8px] p-6 sm:p-8 brutal-card w-full lg:w-[430px] lg:min-h-[420px] shrink-0 ${track.bgClass} ${track.textClass}`}
+              className={`flex w-[210px] shrink-0 snap-start flex-col justify-between rounded-[8px] p-3.5 brutal-card-interactive lg:w-auto lg:min-w-0 lg:flex-1 ${track.bgClass} ${track.textClass}`}
             >
               {/* Top Mono Bar */}
               <div>
                 <div className="flex items-center justify-between gap-2">
                   <span
-                    className={`rounded-[4px] border-2 border-ink px-3 py-1 font-mono text-xs font-extrabold uppercase shadow-[2px_2px_0_#111] ${track.accentBgClass}`}
+                    className={`rounded-[4px] border-2 border-ink px-1.5 py-0.5 font-mono text-[10px] font-extrabold uppercase shadow-[2px_2px_0_#111] ${track.accentBgClass}`}
                   >
                     {track.monoLabel}
                   </span>
-                  <span className="font-mono text-sm font-extrabold opacity-80">
+                  <span className="font-mono text-[10px] font-extrabold opacity-80">
                     0{idx + 1}/06
                   </span>
                 </div>
 
-                {/* Huge Title */}
-                <h3 className="mt-6 font-display text-4xl sm:text-5xl font-extrabold uppercase tracking-tight leading-none">
+                <h3 className="mt-3 font-display text-xl xl:text-2xl font-extrabold uppercase tracking-tight leading-none">
                   {track.title}
                 </h3>
 
-                {/* Description */}
-                <p className="mt-4 text-base sm:text-lg font-medium leading-relaxed opacity-95">
+                <p className="mt-1.5 text-xs font-medium leading-snug opacity-95">
                   {track.description}
                 </p>
               </div>
 
               {/* Topic Pills + CTA */}
-              <div className="mt-8 pt-5 border-t-[3px] border-ink/30">
-                <div className="mb-5 flex flex-wrap gap-2">
+              <div className="mt-3 pt-2.5 border-t-[3px] border-ink/30">
+                <div className="mb-2.5 flex flex-wrap gap-1">
                   {track.topics.map((topic) => (
                     <span
                       key={topic}
-                      className="rounded-[4px] border-2 border-ink bg-white px-2.5 py-1 font-mono text-xs font-extrabold text-ink"
+                      className="rounded-[3px] border-2 border-ink bg-white px-1.5 py-0.5 font-mono text-[10px] font-extrabold text-ink"
                     >
                       #{topic}
                     </span>
@@ -233,10 +180,10 @@ export default function Tracks() {
 
                 <a
                   href="#join"
-                  className={`inline-flex w-full items-center justify-between rounded-[6px] px-5 py-3.5 font-mono text-sm font-extrabold uppercase tracking-tight brutal-btn ${track.btnClass}`}
+                  className={`inline-flex w-full items-center justify-between rounded-[6px] px-3 py-1.5 font-mono text-[11px] font-extrabold uppercase tracking-tight brutal-btn ${track.btnClass}`}
                 >
-                  <span>Start learning</span>
-                  <span aria-hidden="true" className="text-base leading-none">
+                  <span>Start</span>
+                  <span aria-hidden="true" className="text-sm leading-none">
                     →
                   </span>
                 </a>

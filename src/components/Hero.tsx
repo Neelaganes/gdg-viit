@@ -160,7 +160,7 @@ export default function Hero() {
       aria-labelledby="hero-heading"
       onPointerMove={onPointerMove}
       onPointerLeave={onPointerLeave}
-      className="relative overflow-hidden pb-20 pt-8 sm:pb-24 sm:pt-12 lg:flex lg:min-h-[calc(100svh-5rem)] lg:items-center lg:py-16"
+      className="relative overflow-hidden pb-12 pt-6 sm:pb-14 sm:pt-8 lg:flex lg:min-h-[calc(85svh-5rem)] lg:items-center lg:py-10"
     >
       {/* intro wipe: four brand bars lift off the stage (pure CSS so it runs before hydration) */}
       {!wipeDone && (
@@ -181,12 +181,12 @@ export default function Hero() {
       ))}
 
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-8">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-8">
           {/* ---------------- Left: copy ---------------- */}
           <div className="flex flex-col items-start lg:col-span-7">
             <motion.div
               {...enter(0.35)}
-              className="mb-6 inline-flex items-center gap-2.5 rounded-[4px] border-[3px] border-ink bg-white px-3.5 py-1.5 font-mono text-xs font-extrabold tracking-tight text-ink shadow-[4px_4px_0_#111] sm:text-sm"
+              className="mb-4 inline-flex items-center gap-2.5 rounded-[4px] border-[3px] border-ink bg-white px-3.5 py-1.5 font-mono text-xs font-extrabold tracking-tight text-ink shadow-[4px_4px_0_#111] sm:text-sm"
             >
               <span className="relative flex h-2.5 w-2.5">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-g-green opacity-75 motion-reduce:hidden" />
@@ -197,7 +197,7 @@ export default function Hero() {
 
             <h1
               id="hero-heading"
-              className="select-none font-display text-[3.4rem] font-extrabold uppercase leading-[0.95] tracking-[-0.04em] text-ink sm:text-7xl md:text-8xl xl:text-[6.4rem]"
+              className="select-none font-display text-[2.6rem] font-extrabold uppercase leading-[0.95] tracking-[-0.04em] text-ink sm:text-6xl md:text-7xl xl:text-[5rem]"
             >
               <span className="sr-only">Build. Break. Ship.</span>
               <span aria-hidden="true" className="block">
@@ -240,20 +240,19 @@ export default function Hero() {
 
             <motion.p
               {...enter(1.15)}
-              className="mt-7 max-w-xl text-base font-medium leading-relaxed text-ink/90 sm:text-lg md:text-xl"
+              className="mt-5 max-w-lg text-sm font-medium leading-relaxed text-ink/90 sm:text-base"
             >
               The student developer community at{" "}
               <strong className="font-extrabold underline decoration-g-red decoration-[3px] underline-offset-4">
                 Vignan&apos;s Institute of Information Technology
               </strong>
-              , Duvvada. Workshops, 36-hour hackathons, study jams and open-source sprints, run by students for
-              students.
+              . Workshops, hackathons &amp; study jams, by students for students.
             </motion.p>
 
-            <motion.div {...enter(1.25)} className="mt-8 flex w-full flex-wrap items-center gap-4 sm:w-auto">
+            <motion.div {...enter(1.25)} className="mt-6 flex w-full flex-wrap items-center gap-3 sm:w-auto">
               <a
                 href="#events"
-                className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-[6px] bg-g-blue px-6 py-4 font-mono text-sm font-extrabold uppercase tracking-tight text-white brutal-btn sm:flex-initial sm:text-base"
+                className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-[6px] bg-g-blue px-5 py-3 font-mono text-sm font-extrabold uppercase tracking-tight text-white brutal-btn sm:flex-initial"
               >
                 <span>Upcoming events</span>
                 <span aria-hidden="true" className="text-lg leading-none transition-transform group-hover:translate-y-1">
@@ -262,7 +261,7 @@ export default function Hero() {
               </a>
               <a
                 href="#join"
-                className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-[6px] bg-white px-6 py-4 font-mono text-sm font-extrabold uppercase tracking-tight text-ink brutal-btn sm:flex-initial sm:text-base"
+                className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-[6px] bg-white px-5 py-3 font-mono text-sm font-extrabold uppercase tracking-tight text-ink brutal-btn sm:flex-initial"
               >
                 <span>Join us</span>
                 <span aria-hidden="true" className="text-lg leading-none transition-transform group-hover:translate-x-1">
@@ -273,7 +272,7 @@ export default function Hero() {
 
             <motion.div
               {...enter(1.35)}
-              className="mt-8 flex flex-wrap items-center gap-3 font-mono text-xs font-bold text-ink/80"
+              className="mt-6 flex flex-wrap items-center gap-3 font-mono text-xs font-bold text-ink/80"
             >
               <span className="rounded-[4px] border-2 border-ink bg-white px-2.5 py-1">17.71° N · 83.17° E</span>
               <span className="rounded-[4px] border-2 border-dashed border-ink px-2.5 py-1">

@@ -3,12 +3,8 @@ import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import AboutBento from "@/components/AboutBento";
 import EventSpotlight from "@/components/EventSpotlight";
-import Stats from "@/components/Stats";
-import Tracks from "@/components/Tracks";
-import PastEvents from "@/components/PastEvents";
+import UpcomingEvents from "@/components/UpcomingEvents";
 import Team from "@/components/Team";
-import Gallery from "@/components/Gallery";
-import Faq from "@/components/Faq";
 import JoinCta from "@/components/JoinCta";
 import Footer from "@/components/Footer";
 
@@ -21,12 +17,8 @@ export default function Home() {
         <Marquee />
         <AboutBento />
         <EventSpotlight />
-        <Stats />
-        <Tracks />
-        <PastEvents />
+        <UpcomingEvents />
         <Team />
-        <Gallery />
-        <Faq />
         <JoinCta />
       </main>
       <Footer />

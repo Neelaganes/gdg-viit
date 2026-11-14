@@ -18,15 +18,15 @@ const BENTO_ITEMS: BentoItem[] = [
     index: "01",
     title: "Workshops",
     description:
-      "Zero-fluff code labs where every student leaves with a live, deployed project repo on GitHub.",
-    spanClass: "md:col-span-7",
+      "Hands-on labs. Leave with a deployed repo.",
+    spanClass: "md:col-span-4",
     bgClass: "bg-g-blue",
     textClass: "text-white",
     badgeBgClass: "bg-cream text-ink",
     icon: (
       <svg
         viewBox="0 0 48 48"
-        className="h-11 w-11 shrink-0"
+        className="h-7 w-7 shrink-0"
         fill="none"
         aria-hidden="true"
       >
@@ -62,15 +62,15 @@ const BENTO_ITEMS: BentoItem[] = [
     index: "02",
     title: "Hackathons",
     description:
-      "High-voltage 24 to 36-hour campus build sprints solving real problems for Visakhapatnam and beyond.",
-    spanClass: "md:col-span-5",
+      "24-36 hour build sprints on real problems.",
+    spanClass: "md:col-span-4",
     bgClass: "bg-g-red",
     textClass: "text-white",
     badgeBgClass: "bg-g-yellow text-ink",
     icon: (
       <svg
         viewBox="0 0 48 48"
-        className="h-11 w-11 shrink-0"
+        className="h-7 w-7 shrink-0"
         fill="none"
         aria-hidden="true"
       >
@@ -88,7 +88,7 @@ const BENTO_ITEMS: BentoItem[] = [
     index: "03",
     title: "Study Jams",
     description:
-      "Multi-week guided cohorts across GenAI, Google Cloud, Android, and Flutter with peer mentors.",
+      "Guided cohorts on GenAI, Cloud & Android.",
     spanClass: "md:col-span-4",
     bgClass: "bg-g-yellow",
     textClass: "text-ink",
@@ -96,7 +96,7 @@ const BENTO_ITEMS: BentoItem[] = [
     icon: (
       <svg
         viewBox="0 0 48 48"
-        className="h-11 w-11 shrink-0"
+        className="h-7 w-7 shrink-0"
         fill="none"
         aria-hidden="true"
       >
@@ -134,7 +134,7 @@ const BENTO_ITEMS: BentoItem[] = [
     index: "04",
     title: "Tech Talks",
     description:
-      "Fireside chats and architecture deep-dives with Google Developer Experts and industry engineers.",
+      "Deep-dives with GDEs and engineers.",
     spanClass: "md:col-span-4",
     bgClass: "bg-white",
     textClass: "text-ink",
@@ -142,7 +142,7 @@ const BENTO_ITEMS: BentoItem[] = [
     icon: (
       <svg
         viewBox="0 0 48 48"
-        className="h-11 w-11 shrink-0"
+        className="h-7 w-7 shrink-0"
         fill="none"
         aria-hidden="true"
       >
@@ -184,7 +184,7 @@ const BENTO_ITEMS: BentoItem[] = [
     index: "05",
     title: "Open Source",
     description:
-      "Collaborative campus tooling, Git clinics, and pull-request sprints where students build in public.",
+      "Git clinics and PR sprints, built in public.",
     spanClass: "md:col-span-4",
     bgClass: "bg-g-green",
     textClass: "text-ink",
@@ -192,7 +192,7 @@ const BENTO_ITEMS: BentoItem[] = [
     icon: (
       <svg
         viewBox="0 0 48 48"
-        className="h-11 w-11 shrink-0"
+        className="h-7 w-7 shrink-0"
         fill="none"
         aria-hidden="true"
       >
@@ -240,15 +240,15 @@ const BENTO_ITEMS: BentoItem[] = [
     index: "06",
     title: "Community",
     description:
-      "A tight-knit network of 500+ builders across CSE, IT, AI&DS and the other CSE-allied branches at VIIT sharing referrals, code reviews, and demo days.",
-    spanClass: "md:col-span-12",
+      "500+ builders across CSE and allied CSE branches at VIIT.",
+    spanClass: "md:col-span-4",
     bgClass: "bg-cream",
     textClass: "text-ink",
     badgeBgClass: "bg-g-yellow text-ink",
     icon: (
       <svg
         viewBox="0 0 48 48"
-        className="h-11 w-11 shrink-0"
+        className="h-7 w-7 shrink-0"
         fill="none"
         aria-hidden="true"
       >
@@ -296,18 +296,18 @@ export default function AboutBento() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="py-16 sm:py-24"
+      className="py-10 sm:py-14"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="mb-7 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
             <div className="mb-3 inline-flex items-center gap-2 rounded-[4px] border-[3px] border-ink bg-g-green px-3 py-1 font-mono text-xs font-extrabold uppercase text-ink shadow-[3px_3px_0_#111]">
               <span>01 — &lt;what-we-do/&gt;</span>
             </div>
             <h2
               id="about-heading"
-              className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-tight leading-[0.95] text-ink"
+              className="font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight leading-[0.95] text-ink"
             >
               Not another club.{" "}
               <span className="inline-block rounded-[4px] border-[3px] border-ink bg-g-yellow px-2.5 py-0.5 shadow-[4px_4px_0_#111] rotate-1">
@@ -317,12 +317,12 @@ export default function AboutBento() {
           </div>
 
           <p className="max-w-md font-mono text-xs sm:text-sm font-bold text-ink/80">
-            {"// Six ways we turn lecture-hall theory into production software on the VIIT Duvvada campus."}
+            {"// Six ways we turn theory into shipped code."}
           </p>
         </div>
 
         {/* Asymmetric 6-Tile Bento Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-12">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-12">
           {BENTO_ITEMS.map((tile, idx) => (
             <motion.article
               key={tile.index}
@@ -338,26 +338,26 @@ export default function AboutBento() {
                 delay: prefersReducedMotion ? 0 : idx * 0.065,
               }}
               tabIndex={0}
-              className={`group relative flex flex-col justify-between rounded-[6px] p-6 sm:p-8 brutal-card-interactive cursor-pointer ${tile.spanClass} ${tile.bgClass} ${tile.textClass}`}
+              className={`group relative flex flex-col justify-between rounded-[6px] p-4 sm:p-5 brutal-card-interactive cursor-pointer ${tile.spanClass} ${tile.bgClass} ${tile.textClass}`}
             >
               {/* Top Row: Mono Index + Geometric Icon */}
               <div className="flex items-start justify-between gap-4">
                 <span
-                  className={`inline-flex items-center rounded-[4px] border-[3px] border-ink px-3 py-1 font-mono text-sm font-extrabold shadow-[3px_3px_0_#111] ${tile.badgeBgClass}`}
+                  className={`inline-flex items-center rounded-[4px] border-[3px] border-ink px-2 py-0.5 font-mono text-xs font-extrabold shadow-[3px_3px_0_#111] ${tile.badgeBgClass}`}
                 >
                   {tile.index} —
                 </span>
-                <div className="rounded-[6px] border-[3px] border-ink bg-white p-2 shadow-[4px_4px_0_#111] transition-transform duration-150 group-hover:rotate-6">
+                <div className="rounded-[6px] border-[3px] border-ink bg-white p-1.5 shadow-[3px_3px_0_#111] transition-transform duration-150 group-hover:rotate-6">
                   {tile.icon}
                 </div>
               </div>
 
               {/* Bottom Content */}
-              <div className="mt-8">
-                <h3 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-tight">
+              <div className="mt-4">
+                <h3 className="font-display text-xl font-extrabold uppercase tracking-tight">
                   {tile.title}
                 </h3>
-                <p className="mt-2 text-base sm:text-lg font-medium leading-snug opacity-95">
+                <p className="mt-1 text-sm font-medium leading-snug opacity-95">
                   {tile.description}
                 </p>
               </div>

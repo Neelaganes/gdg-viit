@@ -3,7 +3,7 @@ import { BracketMarkSmall } from "./Navbar";
 const SOCIAL_LINKS = [
   {
     name: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/gdgc_viit/",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -22,7 +22,7 @@ const SOCIAL_LINKS = [
   },
   {
     name: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/gdg-oncampus-viit/",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -42,7 +42,7 @@ const SOCIAL_LINKS = [
   },
   {
     name: "GitHub",
-    href: "#",
+    href: "https://github.com/gdg-viit",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -50,7 +50,8 @@ const SOCIAL_LINKS = [
         fill="none"
         stroke="currentColor"
         strokeWidth="2.2"
-        strokeLinecap="square"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         aria-hidden="true"
       >
         <path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
@@ -58,8 +59,8 @@ const SOCIAL_LINKS = [
     ),
   },
   {
-    name: "X",
-    href: "#",
+    name: "Email",
+    href: "mailto:dscviit@gmail.com",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -70,7 +71,8 @@ const SOCIAL_LINKS = [
         strokeLinecap="square"
         aria-hidden="true"
       >
-        <path d="M4 4l16 16M20 4L4 20" />
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <polyline points="3,6 12,13 21,6" />
       </svg>
     ),
   },
@@ -78,7 +80,7 @@ const SOCIAL_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t-[3px] border-ink bg-ink text-cream">
+    <footer id="footer" className="border-t-[3px] border-ink bg-ink text-cream">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           {/* Column 1: Brand + Campus Address */}
@@ -103,6 +105,8 @@ export default function Footer() {
                 <a
                   key={soc.name}
                   href={soc.href}
+                  target={soc.href.startsWith("http") ? "_blank" : undefined}
+                  rel={soc.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   aria-label={soc.name}
                   className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border-2 border-cream bg-ink text-cream shadow-[3px_3px_0_#FBBC04] transition-transform duration-120 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-g-yellow hover:text-ink hover:border-ink"
                 >
@@ -112,7 +116,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
+          {/* Column 2: Navigation */}
           <div className="md:col-span-3">
             <h2 className="font-mono text-xs font-extrabold uppercase tracking-widest text-g-yellow">
               {"// Navigation"}
@@ -125,22 +129,17 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#events" className="hover:text-g-yellow transition-colors">
-                  02 — Upcoming Events
-                </a>
-              </li>
-              <li>
-                <a href="#tracks" className="hover:text-g-yellow transition-colors">
-                  03 — Learning Tracks
+                  02 — Events Spotlight
                 </a>
               </li>
               <li>
                 <a href="#team" className="hover:text-g-yellow transition-colors">
-                  04 — Core Team
+                  03 — Core Crew
                 </a>
               </li>
               <li>
-                <a href="#gallery" className="hover:text-g-yellow transition-colors">
-                  05 — Campus Gallery
+                <a href="#upcoming" className="hover:text-g-yellow transition-colors">
+                  05 — Event Queue
                 </a>
               </li>
               <li>
@@ -148,32 +147,38 @@ export default function Footer() {
                   06 — FAQ
                 </a>
               </li>
+              <li>
+                <a
+                  href="https://chat.whatsapp.com/Jd97wtBkfiO9ghDFb2rNKF"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-g-yellow transition-colors text-g-yellow"
+                >
+                  07 — Join the Chapter ↗
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Column 3: Tracks */}
+          {/* Column 3: Social Handles (vertical) */}
           <div className="md:col-span-4">
             <h2 className="font-mono text-xs font-extrabold uppercase tracking-widest text-g-green">
-              {"// Technical Tracks"}
+              {"// Social Handles"}
             </h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {[
-                "Android & Kotlin",
-                "Modern Web",
-                "Google Cloud",
-                "Gemini & AI/ML",
-                "Flutter",
-                "Firebase",
-              ].map((track) => (
-                <a
-                  key={track}
-                  href="#tracks"
-                  className="rounded-[4px] border-2 border-cream/40 px-3 py-1.5 font-mono text-xs font-bold text-cream hover:border-g-yellow hover:bg-g-yellow hover:text-ink transition-colors"
-                >
-                  {track}
-                </a>
+            <ul className="mt-4 flex flex-col gap-3">
+              {SOCIAL_LINKS.map((soc) => (
+                <li key={soc.name}>
+                  <a
+                    href={soc.href}
+                    aria-label={soc.name}
+                    className="inline-flex items-center gap-3 rounded-[4px] px-3 py-2 font-mono text-sm font-bold text-cream hover:text-g-yellow transition-colors w-full"
+                  >
+                    {soc.icon}
+                    <span>{soc.name}</span>
+                  </a>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </div>
 
@@ -184,7 +189,7 @@ export default function Footer() {
             independent community groups.
           </p>
           <p className="font-extrabold text-g-yellow">
-            Built by students at VIIT
+            Built by GDG Team VIIT
           </p>
         </div>
       </div>

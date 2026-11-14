@@ -153,10 +153,29 @@ body {
   transform: rotateY(180deg);
 }
 
-.group:hover .group-hover-flip,
-.group:focus-within .group-hover-flip,
-.is-flipped .group-hover-flip {
+/* Tap/click/Enter toggles `.is-flipped`; keyboard focus on a back-side link also shows the back. */
+.is-flipped .group-hover-flip,
+.group:has(a:focus-visible) .group-hover-flip {
   transform: rotateY(180deg);
+}
+
+/* Hover-to-flip only on real pointers, so a tap on a phone doesn't leave a sticky hover flip. */
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .group-hover-flip {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Swipe hint: arrow nudges right to show the row scrolls sideways. */
+@keyframes swipe-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+.animate-swipe-nudge {
+  animation: swipe-nudge 1.1s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-swipe-nudge { animation: none; }
 }
 
 /* Halftone pattern utility */
