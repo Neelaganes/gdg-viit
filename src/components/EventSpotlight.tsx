@@ -12,15 +12,15 @@ interface CountdownTime {
 }
 
 const INITIAL_COUNTDOWN: CountdownTime = {
-  days: 22,
-  hours: 14,
-  minutes: 38,
-  seconds: 45,
+  days: 1,
+  hours: 11,
+  minutes: 41,
+  seconds: 0,
 };
 
 function computeCountdown(): CountdownTime {
   const now = Date.now();
-  const fixedTarget = new Date("2026-12-05T09:00:00+05:30").getTime();
+  const fixedTarget = new Date("2026-11-16T10:00:00+05:30").getTime();
   let diff = fixedTarget - now;
 
   if (diff <= 0) {
@@ -154,35 +154,35 @@ export default function EventSpotlight() {
             <div className="lg:col-span-5">
               <div className="relative overflow-hidden rounded-[6px] border-[3px] border-ink bg-cream shadow-[4px_4px_0_#111]">
                 <Image
-                  src="/images/event-devfest.svg"
-                  alt="DevFest VIIT 2026 neo-brutalist event poster showing code terminal, speaker stage, and 600+ builders"
+                  src="/images/event-inauguration.svg"
+                  alt="GDG VIIT Inauguration 2026 neo-brutalist event poster showing official chapter launch ceremony"
                   width={800}
                   height={600}
                   className="h-auto w-full object-cover"
                   priority
                 />
-                <div className="flex items-center justify-between border-t-[3px] border-ink bg-g-yellow px-3 py-1.5 font-mono text-[11px] font-extrabold text-ink">
-                  <span>EVT_ID // DEVFEST-VIIT-2026</span>
-                  <span>IN-PERSON · 2 DAYS</span>
+                <div className="flex items-center justify-between border-t-[3px] border-ink bg-g-green px-3 py-1.5 font-mono text-[11px] font-extrabold text-ink">
+                  <span>EVT_ID // INAUGURATION-VIIT-2026</span>
+                  <span>IN-PERSON · 1 DAY</span>
                 </div>
               </div>
             </div>
 
             {/* Right Side: Event Info + Live Countdown + RSVP */}
             <div className="lg:col-span-7 flex flex-col items-start">
-              <div className="inline-flex items-center gap-2 rounded-[4px] border-2 border-ink bg-g-green px-2 py-0.5 font-mono text-[11px] font-extrabold uppercase text-ink">
-                <span>FLAGSHIP CONFERENCE</span>
+              <div className="inline-flex items-center gap-2 rounded-[4px] border-2 border-ink bg-g-red px-2 py-0.5 font-mono text-[11px] font-extrabold uppercase text-white">
+                <span>OFFICIAL LAUNCH EVENT</span>
               </div>
 
               <h2
                 id="spotlight-heading"
                 className="mt-3 font-display text-3xl sm:text-4xl font-extrabold uppercase tracking-tight leading-none text-ink"
               >
-                DevFest VIIT 2026
+                GDG VIIT Inauguration 2026
               </h2>
 
               <p className="mt-2 text-sm sm:text-base font-medium text-ink/85">
-                Two days of keynotes, Gemini &amp; Cloud labs and showcases.
+                The official launch of GDG on Campus VIIT — ribbon cutting, chapter kickoff, and community celebration.
               </p>
 
               {/* Date & Venue Metadata */}
@@ -192,7 +192,7 @@ export default function EventSpotlight() {
                     {"// DATE"}
                   </span>
                   <span className="mt-0.5 block font-mono text-xs sm:text-sm font-extrabold text-ink">
-                    DEC 05–06 · 9 AM
+                    NOV 16 · 10 AM
                   </span>
                 </div>
 
@@ -217,7 +217,7 @@ export default function EventSpotlight() {
                 </div>
                 <div
                   role="timer"
-                  aria-label="Countdown to DevFest VIIT 2026"
+                  aria-label="Countdown to GDG VIIT Inauguration 2026"
                   className="grid grid-cols-4 gap-2 sm:gap-2.5"
                 >
                   <CountdownBox
@@ -247,21 +247,6 @@ export default function EventSpotlight() {
                 </div>
               </div>
 
-              {/* RSVP Button */}
-              <div className="mt-5 flex flex-wrap items-center gap-3 w-full sm:w-auto">
-                <a
-                  href="#"
-                  className="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-[6px] bg-g-yellow px-5 py-2.5 font-mono text-sm font-extrabold uppercase tracking-tight text-ink brutal-btn"
-                >
-                  <span>RSVP now</span>
-                  <span aria-hidden="true" className="text-lg leading-none">
-                    ↗
-                  </span>
-                </a>
-                <span className="font-mono text-xs font-bold text-ink/75">
-                  ⚡ 140 seats left
-                </span>
-              </div>
             </div>
           </div>
         </motion.div>
