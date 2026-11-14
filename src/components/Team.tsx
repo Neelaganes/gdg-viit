@@ -4,171 +4,166 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 
-interface TeamMember {
-  id: string;
-  badgeCode: string;
-  role: string;
-  name: string;
-  branchYear: string;
-  avatar: string;
+/* ------------------------------------------------------------------ */
+/*  Role styling + back-of-card copy, shared by everyone in that role  */
+/* ------------------------------------------------------------------ */
+
+interface RoleStyle {
   roleBg: string;
   backBg: string;
   backText: string;
-  funFact: string;
+  focus: string;
   stack: string;
 }
 
-const TEAM_MEMBERS: TeamMember[] = [
-  {
-    id: "organizer",
-    badgeCode: "VIIT-ID-001",
-    role: "Organizer",
-    name: "Your Name",
-    branchYear: "B.Tech CSE · IV Year",
-    avatar: "/images/team-1.svg",
+const ROLE_STYLES: Record<string, RoleStyle> = {
+  Organiser: {
     roleBg: "bg-g-blue text-white",
     backBg: "bg-g-blue",
     backText: "text-white",
-    funFact:
-      "Shipped 3 campus tools during exam week.",
-    stack: "Go · Next.js · Cloud Run",
+    focus: "Runs the chapter and keeps every event on track.",
+    stack: "Planning · Community",
   },
-  {
-    id: "tech-lead",
-    badgeCode: "VIIT-ID-002",
-    role: "Tech Lead",
-    name: "Your Name",
-    branchYear: "B.Tech AI & DS · III Year",
-    avatar: "/images/team-2.svg",
-    roleBg: "bg-g-green text-ink",
-    backBg: "bg-g-green",
-    backText: "text-ink",
-    funFact:
-      "Debugs Kubernetes YAML for fun.",
-    stack: "Kotlin · Gemini API · Rust",
-  },
-  {
-    id: "design-lead",
-    badgeCode: "VIIT-ID-003",
-    role: "Design Lead",
-    name: "Your Name",
-    branchYear: "B.Tech IT · III Year",
-    avatar: "/images/team-3.svg",
-    roleBg: "bg-g-yellow text-ink",
-    backBg: "bg-g-yellow",
-    backText: "text-ink",
-    funFact:
-      "Spots a 1px misalignment from across the hall.",
-    stack: "Figma · CSS Shaders · Motion",
-  },
-  {
-    id: "events-lead",
-    badgeCode: "VIIT-ID-004",
-    role: "Events Lead",
-    name: "Your Name",
-    branchYear: "B.Tech ECE · III Year",
-    avatar: "/images/team-4.svg",
+  "Co-Lead": {
     roleBg: "bg-g-red text-white",
     backBg: "bg-g-red",
     backText: "text-white",
-    funFact:
-      "Ran a 36h hackathon on filter coffee.",
-    stack: "Firebase · Flutter · Ops",
+    focus: "Backs the organisers across every team.",
+    stack: "Leadership · Ops",
   },
-  {
-    id: "community-lead",
-    badgeCode: "VIIT-ID-005",
-    role: "Community Lead",
-    name: "Your Name",
-    branchYear: "B.Tech CSE · III Year",
-    avatar: "/images/team-5.svg",
+  "Web Dev Lead": {
     roleBg: "bg-g-blue text-white",
     backBg: "bg-g-blue",
     backText: "text-white",
-    funFact:
-      "Onboarded 180+ freshers to their first PR.",
-    stack: "TypeScript · Git · Discord",
-  },
-  {
-    id: "content-lead",
-    badgeCode: "VIIT-ID-006",
-    role: "Content Lead",
-    name: "Your Name",
-    branchYear: "B.Tech IT · II Year",
-    avatar: "/images/team-6.svg",
-    roleBg: "bg-g-green text-ink",
-    backBg: "bg-g-green",
-    backText: "text-ink",
-    funFact:
-      "Explains system design in 60 seconds.",
-    stack: "Astro · MDX · Vertex AI",
-  },
-  {
-    id: "android-lead",
-    badgeCode: "VIIT-ID-007",
-    role: "Android Lead",
-    name: "Your Name",
-    branchYear: "B.Tech CSE · III Year",
-    avatar: "/images/team-1.svg",
-    roleBg: "bg-g-green text-ink",
-    backBg: "bg-g-green",
-    backText: "text-ink",
-    funFact: "Has a Compose preview for everything.",
-    stack: "Kotlin · Compose",
-  },
-  {
-    id: "web-lead",
-    badgeCode: "VIIT-ID-008",
-    role: "Web Lead",
-    name: "Your Name",
-    branchYear: "B.Tech IT · III Year",
-    avatar: "/images/team-2.svg",
-    roleBg: "bg-g-blue text-white",
-    backBg: "bg-g-blue",
-    backText: "text-white",
-    funFact: "Chases 100 Lighthouse scores for fun.",
+    focus: "Leads web workshops and builds the chapter site.",
     stack: "Next.js · TypeScript",
   },
-  {
-    id: "cloud-lead",
-    badgeCode: "VIIT-ID-009",
-    role: "Cloud Lead",
-    name: "Your Name",
-    branchYear: "B.Tech CSE · III Year",
-    avatar: "/images/team-3.svg",
+  "Cloud Lead": {
     roleBg: "bg-g-red text-white",
     backBg: "bg-g-red",
     backText: "text-white",
-    funFact: "Keeps the cloud bill at zero rupees.",
-    stack: "Cloud Run · Terraform",
+    focus: "Runs Cloud study jams and skill-badge drives.",
+    stack: "Google Cloud · Docker",
   },
-  {
-    id: "ai-lead",
-    badgeCode: "VIIT-ID-010",
-    role: "AI/ML Lead",
-    name: "Your Name",
-    branchYear: "B.Tech AI & DS · III Year",
-    avatar: "/images/team-4.svg",
+  "AI/ML Lead": {
     roleBg: "bg-g-yellow text-ink",
     backBg: "bg-g-yellow",
     backText: "text-ink",
-    funFact: "Fine-tunes models between lectures.",
-    stack: "Gemini · PyTorch",
+    focus: "Leads Gemini and machine-learning sessions.",
+    stack: "Gemini · Python",
   },
-  {
-    id: "marketing-lead",
-    badgeCode: "VIIT-ID-011",
-    role: "Marketing Lead",
-    name: "Your Name",
-    branchYear: "B.Tech ECE · II Year",
-    avatar: "/images/team-5.svg",
+  "CP/DSA Lead": {
+    roleBg: "bg-g-green text-ink",
+    backBg: "bg-g-green",
+    backText: "text-ink",
+    focus: "Runs coding contests and DSA practice.",
+    stack: "C++ · Algorithms",
+  },
+  "UI/UX Lead": {
+    roleBg: "bg-g-yellow text-ink",
+    backBg: "bg-g-yellow",
+    backText: "text-ink",
+    focus: "Designs the chapter's look, posters and UI.",
+    stack: "Figma · Design",
+  },
+  "Events Lead": {
+    roleBg: "bg-g-red text-white",
+    backBg: "bg-g-red",
+    backText: "text-white",
+    focus: "Plans and runs workshops and hackathons.",
+    stack: "Logistics · Ops",
+  },
+  "Content Lead": {
+    roleBg: "bg-g-green text-ink",
+    backBg: "bg-g-green",
+    backText: "text-ink",
+    focus: "Writes the posts, recaps and event copy.",
+    stack: "Writing · Docs",
+  },
+  "Social Media Lead": {
     roleBg: "bg-g-blue text-white",
     backBg: "bg-g-blue",
     backText: "text-white",
-    funFact: "Wrote every poster pun on campus.",
-    stack: "Canva · Instagram",
+    focus: "Runs the chapter's social channels.",
+    stack: "Instagram · LinkedIn",
   },
+};
+
+/* ------------------------------------------------------------------ */
+/*  Team members, in display order                                     */
+/*                                                                     */
+/*  To add a photo: put the image in /public/team/ and set `photo`,    */
+/*  e.g.  photo: "/team/anshika.jpg"  (square images work best).       */
+/*  Until then the card shows a photo slot with the person's initials. */
+/* ------------------------------------------------------------------ */
+
+interface TeamMember {
+  id: string;
+  name: string;
+  role: keyof typeof ROLE_STYLES;
+  branchYear: string;
+  photo?: string;
+}
+
+const TEAM_MEMBERS: TeamMember[] = [
+  // Organisers
+  { id: "anshika", name: "Anshika Vishwakarma", role: "Organiser", branchYear: "CSE (AI) · IV Year", photo: "/team/Anshika.jpg" },
+  { id: "deepanwitha", name: "Deepanwitha Gopisetty", role: "Organiser", branchYear: "CSE · III Year", photo: "/team/Deepanwitha Gopisetty.jpg" },
+  { id: "manivarshith", name: "Manivarshith Rongali", role: "Organiser", branchYear: "CSE · III Year" },
+  // Co-Lead
+  { id: "danush", name: "Kaviti Danush", role: "Co-Lead", branchYear: "CSE (AI) · III Year", photo: "/team/Kaviti Danush.jpg" },
+  // Technical leads
+  { id: "neela-ganesh", name: "D. Neela Ganesh", role: "Web Dev Lead", branchYear: "CSE · III Year", photo: "/team/Neelaganesh D.jpg" },
+  { id: "kousik", name: "Kousik Puppala", role: "Web Dev Lead", branchYear: "CSE · III Year", photo: "/team/kousik Puppala.png" },
+  { id: "sahithi", name: "Sahithi", role: "Cloud Lead", branchYear: "CSE · III Year", photo: "/team/Sahithi.png" },
+  { id: "siri-vennela", name: "Siri Vennela", role: "AI/ML Lead", branchYear: "CSE (AI) · III Year", photo: "/team/Siri Vennela.jpg" },
+  { id: "sri-praneeth", name: "Chakka Sri Praneeth", role: "CP/DSA Lead", branchYear: "CSE · III Year", photo: "/team/Praneeth Chakka.png" },
+  { id: "harshitha", name: "Channa Venkata Harshitha", role: "UI/UX Lead", branchYear: "CSE · III Year", photo: "/team/Harshitha Channa.jpg" },
+  // Events, content & outreach
+  { id: "ahamed-raza", name: "Md Ahamed Raza", role: "Events Lead", branchYear: "CSE · III Year", photo: "/team/Raza.jpeg" },
+  { id: "jahnavi", name: "Yenneti Jahnavi", role: "Events Lead", branchYear: "CSE (AI) · III Year", photo: "/team/Yenneti JAHNAVI.jpg" },
+  { id: "nishanth", name: "Nishanth Varma", role: "Content Lead", branchYear: "CSE · III Year", photo: "/team/nishanth-varma.jpg" },
+  { id: "prasanna", name: "Prasanna Yerra", role: "Content Lead", branchYear: "CSE (AI) · III Year", photo: "/team/Prasanna Yerra.png" },
+  { id: "srikanth", name: "Srikanth Kadiri", role: "Social Media Lead", branchYear: "CSE (AI) · II Year", photo: "/team/Srikanth.jpg" },
 ];
+
+function initials(name: string) {
+  const parts = name.replace(/\./g, " ").split(/\s+/).filter((p) => p.length > 1);
+  const picked = parts.length > 1 ? [parts[0], parts[parts.length - 1]] : parts;
+  return picked.map((p) => p[0]).join("").toUpperCase();
+}
+
+/** Photo slot: shows the photo when set, otherwise a dashed placeholder with initials. */
+function PhotoSlot({ member }: { member: TeamMember }) {
+  return (
+    <div className="relative h-24 w-24 overflow-hidden rounded-[6px] border-[3px] border-ink bg-cream shadow-[3px_3px_0_#111]">
+      {member.photo ? (
+        <Image
+          src={member.photo}
+          alt={`Photo of ${member.name}, ${member.role}`}
+          width={240}
+          height={240}
+          className="h-full w-full object-cover object-[center_25%]"
+        />
+      ) : (
+        <div
+          role="img"
+          aria-label={`Photo placeholder for ${member.name}`}
+          className="flex h-full w-full flex-col items-center justify-center gap-1 bg-halftone"
+        >
+          <div className="flex h-[78%] w-[78%] flex-col items-center justify-center rounded-[4px] border-2 border-dashed border-ink/60 bg-white/80">
+            <span className="font-display text-2xl font-extrabold leading-none text-ink">
+              {initials(member.name)}
+            </span>
+            <span className="mt-1 font-mono text-[8px] font-extrabold uppercase tracking-wider text-ink/60">
+              Photo
+            </span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Team() {
   const prefersReducedMotion = useReducedMotion();
@@ -211,10 +206,12 @@ export default function Team() {
           </p>
         </div>
 
-        {/* 11 ID-Cards in a wrapping flex row: 6 + 5 across two rows on desktop */}
+        {/* 15 ID-Cards in a wrapping flex row: 5 per row on desktop */}
         <div className="flex flex-row flex-wrap justify-center gap-4">
           {TEAM_MEMBERS.map((member, idx) => {
             const isFlipped = Boolean(flippedIds[member.id]);
+            const style = ROLE_STYLES[member.role];
+            const badgeCode = `VIIT-ID-${String(idx + 1).padStart(3, "0")}`;
             return (
               <motion.div
                 key={member.id}
@@ -227,7 +224,7 @@ export default function Team() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{
                   ...springConfig,
-                  delay: prefersReducedMotion ? 0 : idx * 0.065,
+                  delay: prefersReducedMotion ? 0 : (idx % 5) * 0.065,
                 }}
                 onClick={() => toggleFlip(member.id)}
                 onKeyDown={(e) => {
@@ -238,8 +235,8 @@ export default function Team() {
                 }}
                 role="button"
                 tabIndex={0}
-                aria-label={`${member.role} ID card for ${member.name}. Activate or hover to flip for fun fact and socials.`}
-                className={`group perspective-1000 h-[250px] basis-[calc((100%-1rem)/2)] sm:basis-[calc((100%-3rem)/4)] lg:basis-[calc((100%-5rem)/6)] cursor-pointer select-none ${
+                aria-label={`${member.role} ID card for ${member.name}. Activate or hover to flip for more.`}
+                className={`group perspective-1000 h-[275px] basis-[calc((100%-1rem)/2)] sm:basis-[calc((100%-2rem)/3)] lg:basis-[calc((100%-4rem)/5)] cursor-pointer select-none ${
                   isFlipped ? "is-flipped" : ""
                 }`}
               >
@@ -258,7 +255,7 @@ export default function Team() {
 
                       <div className="flex items-center justify-between gap-1 border-b-[3px] border-ink pb-1.5">
                         <span className="truncate font-mono text-[9px] font-extrabold text-ink">
-                          {member.badgeCode}
+                          {badgeCode}
                         </span>
                         <span className="shrink-0 rounded-[3px] border-2 border-ink bg-cream px-1 font-mono text-[9px] font-extrabold uppercase text-ink">
                           ↻
@@ -266,27 +263,19 @@ export default function Team() {
                       </div>
                     </div>
 
-                    {/* Avatar Image with 3px Solid Ink Border */}
+                    {/* Photo slot */}
                     <div className="my-1.5 flex justify-center">
-                      <div className="relative h-16 w-16 xl:h-20 xl:w-20 overflow-hidden rounded-[6px] border-[3px] border-ink bg-cream shadow-[3px_3px_0_#111]">
-                        <Image
-                          src={member.avatar}
-                          alt={`Geometric portrait avatar for ${member.role} (${member.name})`}
-                          width={200}
-                          height={200}
-                          className="h-full w-full object-cover"
-                        />
-                      </div>
+                      <PhotoSlot member={member} />
                     </div>
 
                     {/* Role, Name & Branch Footer */}
                     <div className="border-t-[3px] border-ink pt-1.5">
                       <span
-                        className={`inline-block max-w-full truncate rounded-[3px] border-2 border-ink px-1.5 py-0.5 font-mono text-[9px] font-extrabold uppercase shadow-[2px_2px_0_#111] ${member.roleBg}`}
+                        className={`inline-block max-w-full truncate rounded-[3px] border-2 border-ink px-1.5 py-0.5 font-mono text-[9px] font-extrabold uppercase shadow-[2px_2px_0_#111] ${style.roleBg}`}
                       >
                         {member.role}
                       </span>
-                      <h3 className="mt-1.5 truncate font-display text-base font-extrabold uppercase tracking-tight leading-none text-ink">
+                      <h3 className="mt-1.5 line-clamp-2 font-display text-sm sm:text-[15px] font-extrabold uppercase tracking-tight leading-[1.05] text-ink">
                         {member.name}
                       </h3>
                       <p className="mt-0.5 truncate font-mono text-[9px] font-bold text-ink/75">
@@ -297,7 +286,7 @@ export default function Team() {
 
                   {/* BACK OF ID BADGE (3D rotateY 180deg) */}
                   <div
-                    className={`backface-hidden rotate-y-180 absolute inset-0 flex flex-col justify-between rounded-[8px] border-[3px] border-ink p-2.5 shadow-[4px_4px_0_#111] ${member.backBg} ${member.backText}`}
+                    className={`backface-hidden rotate-y-180 absolute inset-0 flex flex-col justify-between rounded-[8px] border-[3px] border-ink p-2.5 shadow-[4px_4px_0_#111] ${style.backBg} ${style.backText}`}
                   >
                     {/* Lanyard Hole on Back */}
                     <div>
@@ -315,17 +304,17 @@ export default function Team() {
                       </div>
                     </div>
 
-                    {/* Fun Fact & Stack */}
+                    {/* Focus & Stack */}
                     <div className="my-auto rounded-[6px] border-[3px] border-ink bg-white p-2 text-ink shadow-[3px_3px_0_#111]">
                       <span className="inline-block rounded-[3px] border-2 border-ink bg-g-yellow px-1 font-mono text-[9px] font-extrabold uppercase text-ink">
-                        FUN FACT
+                        FOCUS
                       </span>
                       <p className="mt-1 text-[11px] font-semibold leading-snug text-ink">
-                        &ldquo;{member.funFact}&rdquo;
+                        {style.focus}
                       </p>
                       <div className="mt-1.5 border-t-2 border-ink/20 pt-1">
                         <span className="block truncate font-mono text-[10px] font-extrabold text-ink">
-                          {member.stack}
+                          {style.stack}
                         </span>
                       </div>
                     </div>
