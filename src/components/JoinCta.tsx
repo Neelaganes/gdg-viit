@@ -82,7 +82,9 @@ export default function JoinCta() {
           className="mt-6 flex flex-wrap items-center gap-4"
         >
           <a
-            href="#"
+            href="https://chat.whatsapp.com/Jd97wtBkfiO9ghDFb2rNKF"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-3 rounded-[6px] border-[3px] border-cream bg-ink px-5 py-3 font-display text-base sm:text-lg font-extrabold uppercase tracking-tight text-cream shadow-[6px_6px_0_#FFF8E7] transition-all duration-120 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[8px_8px_0_#FFF8E7] active:translate-x-1 active:translate-y-1 active:shadow-none"
           >
             <span>Join the chapter now</span>

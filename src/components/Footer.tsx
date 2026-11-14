@@ -3,7 +3,7 @@ import { BracketMarkSmall } from "./Navbar";
 const SOCIAL_LINKS = [
   {
     name: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/gdgc_viit/",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -22,7 +22,7 @@ const SOCIAL_LINKS = [
   },
   {
     name: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/gdg-oncampus-viit/",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -41,8 +41,8 @@ const SOCIAL_LINKS = [
     ),
   },
   {
-    name: "WhatsApp",
-    href: "#",
+    name: "GitHub",
+    href: "https://github.com/gdg-viit",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -54,7 +54,25 @@ const SOCIAL_LINKS = [
         strokeLinejoin="round"
         aria-hidden="true"
       >
-        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+        <path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
+      </svg>
+    ),
+  },
+  {
+    name: "Email",
+    href: "mailto:dscviit@gmail.com",
+    icon: (
+      <svg
+        viewBox="0 0 24 24"
+        className="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="square"
+        aria-hidden="true"
+      >
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <polyline points="3,6 12,13 21,6" />
       </svg>
     ),
   },
@@ -80,6 +98,22 @@ export default function Footer() {
               Vignan&apos;s Institute of Information Technology (Autonomous),
               Beside VSEZ, Duvvada, Visakhapatnam, Andhra Pradesh 530049.
             </p>
+
+            {/* Social Icons */}
+            <div className="mt-6 flex items-center gap-3">
+              {SOCIAL_LINKS.map((soc) => (
+                <a
+                  key={soc.name}
+                  href={soc.href}
+                  target={soc.href.startsWith("http") ? "_blank" : undefined}
+                  rel={soc.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  aria-label={soc.name}
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-[4px] border-2 border-cream bg-ink text-cream shadow-[3px_3px_0_#FBBC04] transition-transform duration-120 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-g-yellow hover:text-ink hover:border-ink"
+                >
+                  {soc.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Column 2: Navigation */}
@@ -103,7 +137,26 @@ export default function Footer() {
                   03 — Core Crew
                 </a>
               </li>
-
+              <li>
+                <a href="#upcoming" className="hover:text-g-yellow transition-colors">
+                  05 — Event Queue
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="hover:text-g-yellow transition-colors">
+                  06 — FAQ
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://chat.whatsapp.com/Jd97wtBkfiO9ghDFb2rNKF"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-g-yellow transition-colors text-g-yellow"
+                >
+                  07 — Join the Chapter ↗
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -136,7 +189,7 @@ export default function Footer() {
             independent community groups.
           </p>
           <p className="font-extrabold text-g-yellow">
-            Built by students at VIIT
+            Built by GDG Team VIIT
           </p>
         </div>
       </div>
