@@ -177,6 +177,10 @@ function PhotoSlot({ member }: { member: TeamMember }) {
 const PROFILE_LINKS: Record<string, { github?: string; linkedin?: string }> = {
   anshika: { linkedin: "https://www.linkedin.com/in/anshika-vishwakarma/" },
   deepanwitha: { linkedin: "https://www.linkedin.com/in/deepanwitha-gopisetty-17a183303/" },
+  manivarshith: {
+    github: "https://github.com/varshhhy7",
+    linkedin: "https://www.linkedin.com/in/mani-varshith-b06ba3329/",
+  },
   danush: {
     github: "https://github.com/danushkaviti-tech",
     linkedin: "https://www.linkedin.com/in/kaviti-danush-180095325",
@@ -185,7 +189,10 @@ const PROFILE_LINKS: Record<string, { github?: string; linkedin?: string }> = {
     github: "https://github.com/Neelaganes",
     linkedin: "https://www.linkedin.com/in/neelaganeshd/",
   },
-  kousik: { github: "https://github.com/suryanandan-byte" },
+  kousik: {
+    github: "https://github.com/suryanandan-byte",
+    linkedin: "https://www.linkedin.com/in/kousik-puppala-22653a323/",
+  },
   sahithi: {
     github: "https://github.com/Sahithi7396",
     linkedin: "https://www.linkedin.com/in/sahithi-gannavarapu-a0a126316/",
