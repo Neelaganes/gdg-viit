@@ -94,7 +94,7 @@ export default function JoinCta() {
           </a>
 
           <span className="rounded-[4px] bg-g-green px-4 py-2 font-mono text-xs sm:text-sm font-extrabold uppercase text-ink brutal-sticker rotate-2">
-            ✦ Open to all VIIT students
+            ✦ Open to CSE &amp; allied branches
           </span>
         </motion.div>
         </div>
