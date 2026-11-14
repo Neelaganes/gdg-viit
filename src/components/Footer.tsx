@@ -139,8 +139,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#gallery" className="hover:text-g-yellow transition-colors">
-                  05 — Campus Gallery
+                <a href="#upcoming" className="hover:text-g-yellow transition-colors">
+                  05 — Event Queue
                 </a>
               </li>
               <li>
