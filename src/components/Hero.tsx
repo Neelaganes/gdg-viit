@@ -9,26 +9,18 @@ import {
   useSpring,
   useTransform,
   useVelocity,
-  type MotionValue,
 } from "motion/react";
 import { FlapWord } from "./hero/FlapWord";
-import { TypeLine } from "./hero/TypeLine";
+import { EventDeck } from "./hero/EventDeck";
 import { SpinBadge } from "./hero/SpinBadge";
 import { ParallaxShape, type ShapeKind } from "./hero/Shapes";
+import { introOffset } from "./Splash";
 
 /* ------------------------------------------------------------------ */
 /* Content                                                             */
 /* ------------------------------------------------------------------ */
 
 const FLAP_WORDS = ["BREAK.", "DEBUG.", "LEARN.", "SCALE."];
-
-const TERMINAL_LINES = [
-  "gdg join --campus viit",
-  "npm run hackathon -- --hours=36",
-  "git push origin main  # shipped ✓",
-  "flutter create study_jam",
-  "gcloud run deploy demo-day",
-];
 
 const WIPE_COLORS = ["bg-g-blue", "bg-g-red", "bg-g-yellow", "bg-g-green"];
 
@@ -47,60 +39,6 @@ const SHAPES: {
   { kind: "squiggle", color: "#34A853", size: 84, depth: -18, className: "right-[3%] bottom-[5%] hidden md:block", bobDelay: 1.8, bobDuration: 5.6 },
   { kind: "plus", color: "#FFFFFF", size: 26, depth: 40, className: "left-[2%] top-[3%] hidden xl:block", bobDelay: 0.3, bobDuration: 4.2 },
   { kind: "half", color: "#34A853", size: 40, depth: -30, className: "right-[7%] top-[9%] block sm:hidden", bobDelay: 0.9, bobDuration: 5 },
-];
-
-type BlockDef = {
-  id: string;
-  color: string;
-  textDark: boolean;
-  pos: string;
-  rotate: number;
-  from: { x: number; y: number; r: number };
-  pulse: { x: number; y: number };
-  scatter: { x: number; y: number; r: number };
-};
-
-const BLOCKS: BlockDef[] = [
-  {
-    id: "01",
-    color: "bg-g-red",
-    textDark: false,
-    pos: "left-2 top-11 sm:left-3 sm:top-12",
-    rotate: -34,
-    from: { x: -260, y: -200, r: -150 },
-    pulse: { x: -10, y: -7 },
-    scatter: { x: -150, y: -110, r: -50 },
-  },
-  {
-    id: "02",
-    color: "bg-g-blue",
-    textDark: false,
-    pos: "left-2 bottom-11 sm:left-3 sm:bottom-12",
-    rotate: 34,
-    from: { x: -260, y: 220, r: 150 },
-    pulse: { x: -10, y: 7 },
-    scatter: { x: -130, y: 150, r: 60 },
-  },
-  {
-    id: "03",
-    color: "bg-g-green",
-    textDark: true,
-    pos: "right-2 top-11 sm:right-3 sm:top-12",
-    rotate: 34,
-    from: { x: 260, y: -220, r: 160 },
-    pulse: { x: 10, y: -7 },
-    scatter: { x: 150, y: -130, r: 55 },
-  },
-  {
-    id: "04",
-    color: "bg-g-yellow",
-    textDark: true,
-    pos: "right-2 bottom-11 sm:right-3 sm:bottom-12",
-    rotate: -34,
-    from: { x: 260, y: 200, r: -160 },
-    pulse: { x: 10, y: 7 },
-    scatter: { x: 140, y: 140, r: -55 },
-  },
 ];
 
 /* Deterministic per-letter tilt so server and client render identically. */
@@ -133,70 +71,6 @@ function DropLetters({ text, delay, reduced }: { text: string; delay: number; re
         );
       })}
     </>
-  );
-}
-
-function BracketBlock({
-  block,
-  index,
-  reduced,
-  progress,
-}: {
-  block: BlockDef;
-  index: number;
-  reduced: boolean;
-  progress: MotionValue<number>;
-}) {
-  const x = useTransform(progress, [0, 1], [0, block.scatter.x]);
-  const y = useTransform(progress, [0, 1], [0, block.scatter.y]);
-  const rotate = useTransform(progress, [0, 1], [0, block.scatter.r]);
-
-  return (
-    // layer 1: scroll-driven scatter
-    <motion.div style={reduced ? undefined : { x, y, rotate }} className={`absolute ${block.pos}`}>
-      {/* layer 2: drag + spring home */}
-      <motion.div
-        drag
-        dragSnapToOrigin
-        dragElastic={0.6}
-        dragTransition={{ bounceStiffness: 520, bounceDamping: 13 }}
-        whileHover={{ scale: 1.05 }}
-        whileDrag={{ scale: 1.14 }}
-        className="relative cursor-grab touch-none active:cursor-grabbing"
-      >
-        {/* layer 3: "compile" heartbeat — all four punch outward together */}
-        <motion.div
-          animate={reduced ? undefined : { x: [0, block.pulse.x, 0], y: [0, block.pulse.y, 0] }}
-          transition={{ duration: 0.38, ease: "easeOut", repeat: Infinity, repeatDelay: 3.6, delay: 2.4 }}
-        >
-          {/* layer 4: fly-in entry */}
-          <motion.div
-            initial={
-              reduced
-                ? { rotate: block.rotate }
-                : { x: block.from.x, y: block.from.y, rotate: block.from.r, opacity: 0 }
-            }
-            animate={{ x: 0, y: 0, rotate: block.rotate, opacity: 1 }}
-            transition={
-              reduced ? { duration: 0 } : { type: "spring", stiffness: 340, damping: 16, delay: 0.6 + index * 0.09 }
-            }
-            className={`flex h-11 w-28 items-center justify-between rounded-[6px] border-[3px] border-ink px-2.5 shadow-[6px_6px_0_#111] sm:h-12 sm:w-32 ${block.color}`}
-          >
-            {block.textDark ? (
-              <>
-                <span className="font-mono text-[10px] font-extrabold tracking-wider text-ink">BLK_{block.id}</span>
-                <span className="h-2.5 w-2.5 rounded-full border-2 border-ink bg-cream" />
-              </>
-            ) : (
-              <>
-                <span className="h-2.5 w-2.5 rounded-full border-2 border-ink bg-cream" />
-                <span className="font-mono text-[10px] font-extrabold tracking-wider text-white">BLK_{block.id}</span>
-              </>
-            )}
-          </motion.div>
-        </motion.div>
-      </motion.div>
-    </motion.div>
   );
 }
 
@@ -239,6 +113,8 @@ function Sticker({
 export default function Hero() {
   const reduced = useReducedMotion() ?? false;
   const heroRef = useRef<HTMLElement | null>(null);
+  // hold entrances while the first-visit splash plays
+  const [o] = useState(introOffset);
 
   // failsafe: unmount the intro wipe even if CSS animations are throttled/paused
   const [wipeDone, setWipeDone] = useState(false);
@@ -252,8 +128,6 @@ export default function Hero() {
   const my = useMotionValue(0);
   const smx = useSpring(mx, { stiffness: 110, damping: 18, mass: 0.5 });
   const smy = useSpring(my, { stiffness: 110, damping: 18, mass: 0.5 });
-  const tiltY = useTransform(smx, [-1, 1], [-9, 9]);
-  const tiltX = useTransform(smy, [-1, 1], [7, -7]);
 
   // scroll: hero exit progress + page scroll velocity
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -277,7 +151,7 @@ export default function Hero() {
   const enter = (delay: number) => ({
     initial: reduced ? false : ({ opacity: 0, y: 26 } as const),
     animate: { opacity: 1, y: 0 },
-    transition: { type: "spring" as const, stiffness: 480, damping: 28, delay },
+    transition: { type: "spring" as const, stiffness: 480, damping: 28, delay: delay + o },
   });
 
   return (
@@ -328,22 +202,22 @@ export default function Hero() {
               <span className="sr-only">Build. Break. Ship.</span>
               <span aria-hidden="true" className="block">
                 <motion.span style={reduced ? undefined : { x: line1X }} className="block whitespace-nowrap">
-                  <DropLetters text="BUILD." delay={0.4} reduced={reduced} />
+                  <DropLetters text="BUILD." delay={o + 0.4} reduced={reduced} />
                 </motion.span>
                 <span className="my-2 block sm:my-3">
-                  <FlapWord words={FLAP_WORDS} reduced={reduced} delay={0.7} hold={2800} />
+                  <FlapWord words={FLAP_WORDS} reduced={reduced} delay={o + 0.7} hold={2800} />
                 </span>
                 <motion.span
                   style={reduced ? undefined : { x: line3X }}
                   className="flex items-center gap-[0.12em] whitespace-nowrap"
                 >
                   <span>
-                    <DropLetters text="SHIP." delay={1.05} reduced={reduced} />
+                    <DropLetters text="SHIP." delay={o + 1.05} reduced={reduced} />
                   </span>
                   <motion.span
                     initial={reduced ? false : { scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
-                    transition={{ type: "spring", stiffness: 420, damping: 14, delay: 1.45 }}
+                    transition={{ type: "spring", stiffness: 420, damping: 14, delay: o + 1.45 }}
                     className="inline-block"
                   >
                     <svg
@@ -390,7 +264,7 @@ export default function Hero() {
                 href="#join"
                 className="group inline-flex flex-1 items-center justify-center gap-2.5 rounded-[6px] bg-white px-6 py-4 font-mono text-sm font-extrabold uppercase tracking-tight text-ink brutal-btn sm:flex-initial sm:text-base"
               >
-                <span>Become a member</span>
+                <span>Join us</span>
                 <span aria-hidden="true" className="text-lg leading-none transition-transform group-hover:translate-x-1">
                   →
                 </span>
@@ -403,93 +277,24 @@ export default function Hero() {
             >
               <span className="rounded-[4px] border-2 border-ink bg-white px-2.5 py-1">17.71° N · 83.17° E</span>
               <span className="rounded-[4px] border-2 border-dashed border-ink px-2.5 py-1">
-                ✋ drag the blocks · peel the stickers
+                ✋ fling the polaroids · peel the stickers
               </span>
             </motion.div>
           </div>
 
-          {/* ---------------- Right: the rig ---------------- */}
+          {/* ---------------- Right: event polaroid deck ---------------- */}
           <motion.div
             style={reduced ? undefined : { y: stageY }}
             className="relative flex items-center justify-center lg:col-span-5"
           >
-            <motion.div
-              initial={reduced ? false : { opacity: 0, scale: 0.9, y: 40 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 24, delay: 0.45 }}
-              style={reduced ? undefined : { rotateX: tiltX, rotateY: tiltY, transformPerspective: 1100 }}
-              className="relative aspect-square w-full max-w-[460px] rounded-[8px] border-[3px] border-ink bg-white shadow-[10px_10px_0_#111]"
-            >
-              {/* window chrome */}
-              <div className="absolute inset-x-0 top-0 z-10 flex items-center justify-between rounded-t-[5px] border-b-[3px] border-ink bg-cream px-3.5 py-2">
-                <div className="flex items-center gap-1.5">
-                  <span className="h-3 w-3 rounded-full border-2 border-ink bg-g-red" />
-                  <span className="h-3 w-3 rounded-full border-2 border-ink bg-g-yellow" />
-                  <span className="h-3 w-3 rounded-full border-2 border-ink bg-g-green" />
-                </div>
-                <span className="font-mono text-[11px] font-extrabold tracking-wide text-ink sm:text-xs">
-                  ~/gdg-viit/rig.tsx
-                </span>
-                <span className="flex items-center gap-1.5 font-mono text-[11px] font-extrabold text-g-red">
-                  <span className="hero-caret inline-block h-2 w-2 rounded-full bg-g-red" />
-                  LIVE
-                </span>
-              </div>
-
-              {/* stage body */}
-              <div className="absolute inset-x-0 bottom-9 top-10 overflow-hidden">
-                {/* dot grid */}
-                <div className="bg-halftone absolute inset-0 opacity-60" />
-                {/* orbit rings */}
-                <div aria-hidden="true" className="absolute inset-0 grid place-items-center">
-                  <div className="hero-orbit relative aspect-square w-[82%] rounded-full border-[3px] border-dashed border-ink/25">
-                    <span className="absolute -top-[10px] left-1/2 h-4 w-4 -translate-x-1/2 rounded-full border-[3px] border-ink bg-g-blue" />
-                    <span className="absolute -bottom-[9px] left-[30%] h-3.5 w-3.5 rotate-45 border-[3px] border-ink bg-g-yellow" />
-                  </div>
-                </div>
-                <div aria-hidden="true" className="absolute inset-0 grid place-items-center">
-                  <div className="hero-orbit-rev relative aspect-square w-[58%] rounded-full border-2 border-ink/20">
-                    <span className="absolute -right-[8px] top-1/2 h-3.5 w-3.5 -translate-y-1/2 rounded-[3px] border-[3px] border-ink bg-g-red" />
-                    <span className="absolute -left-[7px] top-[30%] h-3 w-3 rounded-full border-[3px] border-ink bg-g-green" />
-                  </div>
-                </div>
-
-                {/* the bracket */}
-                <div className="absolute inset-0 grid place-items-center">
-                  <div
-                    role="img"
-                    aria-label="GDG on Campus emblem built from four coloured blocks"
-                    className="relative h-56 w-72 sm:h-64 sm:w-80"
-                  >
-                    {BLOCKS.map((b, i) => (
-                      <BracketBlock key={b.id} block={b} index={i} reduced={reduced} progress={scrollYProgress} />
-                    ))}
-                    {/* caret between the brackets: < _ > */}
-                    <motion.span
-                      initial={reduced ? false : { scaleY: 0 }}
-                      animate={{ scaleY: 1 }}
-                      transition={{ type: "spring", stiffness: 500, damping: 18, delay: 1.1 }}
-                      className="absolute left-1/2 top-1/2 block h-14 w-5 -translate-x-1/2 -translate-y-1/2 sm:h-16 sm:w-6"
-                    >
-                      <span className="hero-caret block h-full w-full rounded-[3px] bg-ink" />
-                    </motion.span>
-                  </div>
-                </div>
-              </div>
-
-              {/* terminal strip */}
-              <div className="absolute inset-x-0 bottom-0 flex h-9 items-center gap-2 rounded-b-[5px] border-t-[3px] border-ink bg-ink pl-24 pr-3.5 font-mono text-[11px] font-bold text-cream sm:pl-28 sm:text-xs">
-                <span className="text-g-green">❯</span>
-                <TypeLine lines={TERMINAL_LINES} reduced={reduced} />
-              </div>
-            </motion.div>
+            <EventDeck reduced={reduced} delay={o + 0.45} />
 
             {/* spinning badge — spins up with scroll speed */}
             <motion.div
               initial={reduced ? false : { scale: 0, rotate: -90 }}
               animate={{ scale: 1, rotate: 0 }}
-              transition={{ type: "spring", stiffness: 380, damping: 15, delay: 1.3 }}
-              className="absolute -bottom-12 -left-1 z-20 sm:-bottom-14 sm:-left-8"
+              transition={{ type: "spring", stiffness: 380, damping: 15, delay: o + 1.3 }}
+              className="absolute -left-1 -top-14 z-20 sm:-left-10 sm:top-[4%]"
             >
               <SpinBadge reduced={reduced} velocity={scrollVelocity} className="w-24 sm:w-32" />
             </motion.div>
@@ -499,8 +304,8 @@ export default function Hero() {
               constraints={heroRef}
               reduced={reduced}
               rotate={-5}
-              delay={1.5}
-              className="-left-1 top-[18%] bg-g-yellow px-3.5 py-1.5 text-ink sm:-left-10"
+              delay={o + 1.5}
+              className="-bottom-12 left-0 hidden bg-g-yellow px-3.5 py-1.5 text-ink sm:-left-6 sm:block"
             >
               ✦ est. on campus
             </Sticker>
@@ -508,7 +313,7 @@ export default function Hero() {
               constraints={heroRef}
               reduced={reduced}
               rotate={4}
-              delay={1.6}
+              delay={o + 1.6}
               className="-right-1 -top-4 bg-g-green px-3.5 py-1.5 text-ink sm:-right-5"
             >
               free to join
@@ -517,10 +322,10 @@ export default function Hero() {
               constraints={heroRef}
               reduced={reduced}
               rotate={-3}
-              delay={1.7}
-              className="-bottom-6 right-3 bg-g-red px-4 py-2 text-white sm:right-6"
+              delay={o + 1.7}
+              className="-bottom-14 right-0 bg-g-red px-4 py-2 text-white sm:-right-4"
             >
-              ⚡ all branches welcome
+              ⚡ CSE &amp; allied branches
             </Sticker>
           </motion.div>
         </div>

@@ -17,7 +17,7 @@ const FAQ_ITEMS: FaqItem[] = [
     code: "Q_01",
     question: "Who can join GDG on Campus VIIT?",
     answer:
-      "Any enrolled student at Vignan's Institute of Information Technology (VIIT), Duvvada — across all branches (CSE, IT, AI&DS, ECE, EEE, Mechanical, Civil) and all academic years (1st through 4th year) — is welcome to join.",
+      "Any enrolled student at Vignan's Institute of Information Technology (VIIT), Duvvada — in CSE or an allied CSE branch (such as IT and AI&DS), from 1st through 4th year, is welcome to join.",
     accentBg: "bg-g-blue text-white",
   },
   {

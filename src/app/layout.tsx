@@ -5,6 +5,7 @@ import {
   JetBrains_Mono,
 } from "next/font/google";
 import "./globals.css";
+import Splash, { SPLASH_GATE_SCRIPT } from "@/components/Splash";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -42,8 +43,14 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${bricolage.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      // the splash gate script sets data-splash before hydration
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: SPLASH_GATE_SCRIPT }} />
+      </head>
       <body className="min-h-full flex flex-col bg-cream text-ink selection:bg-g-yellow selection:text-ink">
+        <Splash />
         {children}
       </body>
     </html>

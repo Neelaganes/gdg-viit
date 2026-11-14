@@ -66,7 +66,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     badgeCode: "VIIT-ID-004",
     role: "Events Lead",
     name: "Your Name",
-    branchYear: "B.Tech ECE · III Year",
+    branchYear: "B.Tech CSE · III Year",
     avatar: "/images/team-4.svg",
     roleBg: "bg-g-red text-white",
     backBg: "bg-g-red",

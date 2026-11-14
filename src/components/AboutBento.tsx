@@ -240,7 +240,7 @@ const BENTO_ITEMS: BentoItem[] = [
     index: "06",
     title: "Community",
     description:
-      "A tight-knit network of 500+ builders across CSE, IT, AI&DS, ECE, and Mech at VIIT sharing referrals, code reviews, and demo days.",
+      "A tight-knit network of 500+ builders across CSE, IT, AI&DS and the other CSE-allied branches at VIIT sharing referrals, code reviews, and demo days.",
     spanClass: "md:col-span-12",
     bgClass: "bg-cream",
     textClass: "text-ink",
